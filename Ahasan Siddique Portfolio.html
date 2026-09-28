@@ -1,0 +1,1581 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Ahasan Siddique Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500&family=Lexend+Giga:wght@200;300&family=Hanken+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #161619;
+    --panel: #202025;
+    --panel-2: #1b1b1f;
+    --well: #111114;
+    --black: #000;
+    --line: rgba(255, 255, 255, 0.09);
+    --line-2: rgba(255, 255, 255, 0.2);
+    --ink: #f1f1f3;
+    --dim: #8e8e98;
+    --faint: #5f5f68;
+    --accent: #ff6a00;
+    --f-d: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --f-t: 'Chakra Petch', 'Helvetica Neue', Arial, sans-serif;
+    --f-w: 'Lexend Giga', 'Helvetica Neue', Arial, sans-serif;
+    --f-m: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    --gut: clamp(16px, 4vw, 56px);
+    --ease: cubic-bezier(.2, .7, .2, 1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16px/1.55 var(--f-d);
+    padding-inline: var(--gut);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1400px; margin-inline: auto; }
+  .label {
+    font: 500 12.5px/1 var(--f-t);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .label.dim { color: var(--dim); }
+  .mono { font: 400 12px/1.4 var(--f-m); letter-spacing: 0.04em; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .sq { display: inline-block; width: 14px; height: 14px; background: var(--accent); flex: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* nav */
+  .nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    margin-inline: calc(var(--gut) * -1);
+    padding: 14px var(--gut);
+    background: rgba(22, 22, 25, 0.82);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav { transition: border-color .3s, transform .6s var(--ease); }
+  .nav.hide { transform: translateY(-100%); }
+  .nav-in { max-width: 1400px; margin-inline: auto; display: flex; align-items: center; gap: 32px; }
+  .logo { font: 500 22px/1 var(--f-t); letter-spacing: 0.04em; text-decoration: none; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; margin-left: auto; }
+  .nav-links a {
+    font: 500 12.5px/1 var(--f-t); letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--dim); text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 20px;
+    font: 500 12.5px/1 var(--f-t); letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer;
+    border: 1px solid var(--line-2); background: transparent; color: var(--ink);
+    transition: background .25s, border-color .25s, color .25s;
+  }
+  .btn svg { width: 14px; height: 14px; transition: transform .3s var(--ease); }
+  .btn:hover svg { transform: translateX(4px); }
+  .btn:hover { border-color: var(--ink); }
+  .btn.solid { background: var(--ink); color: #111; border-color: var(--ink); }
+  .btn.solid:hover { background: #fff; }
+  .nav .btn { padding: 11px 16px; }
+
+  section { padding-block: clamp(64px, 10vw, 140px) 0; }
+
+  /* hero */
+  .hero {
+    position: relative; padding-block: 0;
+    display: grid; grid-template-columns: minmax(0, 1fr); align-items: center;
+  }
+  .hero-glow {
+    position: absolute; z-index: 0; pointer-events: none;
+    right: -12%; top: -10%; width: 80%; height: 115%;
+    background: radial-gradient(closest-side, rgba(214, 70, 40, 0.20), rgba(214, 70, 40, 0.07) 55%, rgba(214, 70, 40, 0) 100%);
+    animation: breathe 10s ease-in-out infinite;
+  }
+  @keyframes breathe { 50% { opacity: .7; transform: scale(1.04); } }
+  .hero-copy { position: relative; z-index: 2; display: grid; gap: 28px; padding-block: 48px 8px; }
+  .eyebrow { display: flex; align-items: center; gap: 10px; animation: fadeUp .9s var(--ease) .05s both; }
+  .hero h1 {
+    margin: 0;
+    font: 300 clamp(30px, 4.6vw, 72px)/1.1 var(--f-w);
+    text-transform: uppercase; letter-spacing: 0;
+  }
+  .hero h1 .ln { display: block; }
+  .hero h1 .w > span { animation: rise 1.1s var(--ease) both; animation-delay: calc(.15s + var(--i) * 75ms); }
+  @keyframes rise { from { transform: translateY(105%); } }
+  .hero-copy p { margin: 0; color: var(--dim); max-width: 48ch; font-size: 16px; text-wrap: pretty; animation: fadeUp .9s var(--ease) .4s both; }
+  .hero-copy .row { animation: fadeUp .9s var(--ease) .5s both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .portrait {
+    position: relative; z-index: 1;
+    height: clamp(420px, 110vw, 560px);
+    margin-top: -24px;
+    animation: fadeIn 1.4s ease .15s both;
+  }
+  @keyframes fadeIn { from { opacity: 0; } }
+  .portrait-in { position: absolute; inset: 0; transition: transform 1.2s var(--ease); will-change: transform; }
+  .portrait img, .portrait svg {
+    position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: center top;
+    filter: grayscale(1) contrast(1.08) brightness(.9);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 22%), linear-gradient(to right, transparent 0%, #000 18%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to top, transparent 0%, #000 22%), linear-gradient(to right, transparent 0%, #000 18%);
+    mask-composite: intersect;
+  }
+  .portrait img[hidden], .ph-btn[hidden] { display: none; }
+  .ph-btn {
+    position: absolute; left: 50%; bottom: 20%; transform: translateX(-50%); z-index: 2;
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    padding: 10px 14px; cursor: pointer;
+    background: rgba(22, 22, 25, .75); border: 1px dashed var(--line-2); color: var(--dim);
+    font: 500 11.5px/1 var(--f-t); letter-spacing: .1em; text-transform: uppercase;
+    transition: color .2s, border-color .2s;
+  }
+  .ph-btn:hover { color: var(--ink); border-color: var(--ink); }
+  .ph-btn:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .ph-btn input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+  .portrait-in { animation: unclip 1.7s cubic-bezier(.76, 0, .24, 1) .2s both; }
+  @keyframes unclip { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+  /* statement + stats */
+  .statement {
+    margin: 0 auto; max-width: 30ch; text-align: center;
+    font: 300 clamp(24px, 2.6vw, 36px)/1.35 var(--f-d); text-wrap: balance;
+  }
+  .stats { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: clamp(48px, 6vw, 88px); }
+  .stat {
+    background: var(--panel); padding: 36px 36px 40px;
+    min-height: 340px; display: flex; flex-direction: column;
+    transition: background .3s;
+  }
+  .stat:hover { background: #25252b; }
+  .stat-top { display: flex; justify-content: space-between; align-items: start; }
+  .stat-num {
+    margin-top: auto; font: 300 clamp(64px, 6vw, 88px)/1 var(--f-t);
+    letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  }
+  .stat p { margin: 14px 0 0; font-size: 15.5px; color: var(--ink); max-width: 26ch; line-height: 1.45; }
+
+  /* capabilities */
+  .cap-head { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); align-items: end; margin-bottom: 48px; }
+  .h2 { margin: 0; font: 300 clamp(30px, 3.8vw, 58px)/1.08 var(--f-w); letter-spacing: -0.03em; }
+  .cap-head p { margin: 0; font: 300 clamp(20px, 1.9vw, 26px)/1.35 var(--f-d); max-width: 30ch; text-wrap: balance; }
+  .caps { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .cap {
+    background: var(--panel); padding: 36px; min-height: 420px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .cap .sq { opacity: 0; transform: scale(.4); transition: opacity .35s, transform .35s var(--ease); }
+  .cap:hover .sq, .caps:not(:hover) .cap:first-child .sq { opacity: 1; transform: none; }
+  .cap ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 16px; }
+  .cap-top { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+
+  /* work */
+  .work-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; margin-bottom: 48px; }
+  .work-grid { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
+  .projects { display: grid; gap: 20px; }
+  .proj {
+    background: var(--panel); display: grid;
+    border: 1px solid transparent; transition: border-color .4s;
+  }
+  .proj.on { border-color: var(--line-2); }
+  .draw { position: relative; aspect-ratio: 16 / 9; background: var(--well); max-width: 100%; }
+  .draw canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .draw .mono { position: absolute; left: 16px; top: 14px; }
+  .proj-body { padding: 28px 32px 32px; display: grid; gap: 16px; }
+  .proj-meta { display: flex; align-items: center; gap: 14px; }
+  .proj-idx { font: 300 15px/1 var(--f-t); color: var(--dim); font-variant-numeric: tabular-nums; }
+  .proj-cat { font: 500 11.5px/1 var(--f-t); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+  .proj h3 { margin: 0; font: 300 clamp(26px, 2.4vw, 34px)/1.12 var(--f-d); letter-spacing: -0.01em; text-wrap: balance; }
+  .proj p { margin: 0; color: var(--dim); max-width: 58ch; text-wrap: pretty; }
+  .specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .specs div { padding: 14px 14px 14px 0; display: grid; gap: 4px; }
+  .specs div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+  .specs b { font: 300 22px/1.1 var(--f-t); font-variant-numeric: tabular-nums; }
+  .specs span { font: 500 11px/1 var(--f-t); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+  .proj-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .tools { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tools span { font: 400 11.5px/1 var(--f-m); padding: 7px 10px; border: 1px solid var(--line); color: var(--dim); }
+  .go {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-2);
+    display: grid; place-items: center; color: var(--ink); background: none; cursor: pointer;
+    transition: background .25s, color .25s, border-color .25s;
+  }
+  .go svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+  .proj:hover .go { background: var(--ink); color: #111; border-color: var(--ink); }
+  .proj:hover .go svg { transform: rotate(-45deg); }
+
+  .bot {
+    order: -1; position: relative; background: var(--panel-2);
+    height: 380px; overflow: hidden;
+  }
+  #robot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .bot-cap { position: absolute; left: 24px; top: 22px; right: 24px; z-index: 1; display: grid; gap: 10px; pointer-events: none; }
+  .bot-count { font: 300 40px/1 var(--f-t); font-variant-numeric: tabular-nums; }
+  .bot-count small { font-size: 18px; color: var(--faint); }
+  .bot-title { font: 300 18px/1.3 var(--f-d); color: var(--dim); max-width: 26ch; transition: opacity .3s; }
+  .bot-foot { position: absolute; left: 24px; right: 24px; bottom: 20px; z-index: 1; display: flex; justify-content: space-between; gap: 12px; pointer-events: none; }
+  .nogl .bot-foot, .nogl #robot { display: none; }
+
+  /* experience */
+  .xp { border-top: 1px solid var(--line); }
+  .xp-row {
+    display: grid; gap: 8px 32px; grid-template-columns: minmax(0, 1fr);
+    padding-block: 28px; border-bottom: 1px solid var(--line);
+    transition: background .3s;
+  }
+  .xp-yr { font: 300 18px/1.3 var(--f-t); color: var(--dim); font-variant-numeric: tabular-nums; }
+  .xp-role { font: 300 24px/1.25 var(--f-d); }
+  .xp-org { font: 500 12px/1 var(--f-t); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin-top: 8px; }
+  .xp-row p { margin: 0; color: var(--dim); max-width: 50ch; }
+
+  /* toolkit */
+  .kit { border: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr); overflow: hidden; }
+  .kit-circles {
+    display: grid; grid-template-columns: repeat(3, auto); justify-content: center; gap: clamp(12px, 3vw, 44px);
+    height: clamp(460px, 48vw, 620px); overflow: hidden; padding-inline: 16px;
+    -webkit-mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent);
+    mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent);
+  }
+  .kcol-in { animation: kup 30s linear infinite; }
+  .kcol.rev .kcol-in { animation-direction: reverse; animation-duration: 36s; }
+  .kcol:nth-child(3) .kcol-in { animation-duration: 26s; }
+  .kit-circles:hover .kcol-in { animation-play-state: paused; }
+  @keyframes kup { to { transform: translateY(-50%); } }
+  .circ {
+    width: clamp(92px, 11vw, 164px); aspect-ratio: 1; border-radius: 50%; margin-bottom: clamp(12px, 2.2vw, 30px);
+    border: 1px solid var(--line-2); display: grid; place-items: center; text-align: center;
+    font: 500 clamp(12px, 1.1vw, 15px)/1.2 var(--f-t); letter-spacing: 0.04em; padding: 10px;
+    transition: border-color .3s, background .3s;
+  }
+  .circ:hover { border-color: var(--accent); background: rgba(255, 106, 0, 0.06); }
+  .kit-copy { padding: 48px 32px; display: grid; gap: 20px; align-content: center; justify-items: center; text-align: center; border-top: 1px solid var(--line); }
+  .kit-copy p { margin: 0; max-width: 36ch; font-size: 17px; text-wrap: balance; }
+
+  /* contact */
+  .contact { display: grid; gap: 48px 64px; grid-template-columns: minmax(0, 1fr); padding-bottom: 40px; }
+  .contact .h2 { font-size: clamp(34px, 4.6vw, 70px); }
+  .contact-l { display: grid; gap: 24px; align-content: start; }
+  .contact-l p { margin: 0; color: var(--dim); max-width: 38ch; font-size: 17px; }
+  .mail { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .mail code { font: 400 15px/1.3 var(--f-m); color: var(--ink); user-select: all; }
+  .copy { font: 500 11px/1 var(--f-t); letter-spacing: .1em; text-transform: uppercase; background: none; color: var(--dim); border: 1px solid var(--line-2); padding: 8px 10px; cursor: pointer; }
+  .copy:hover { color: var(--ink); border-color: var(--ink); }
+  form { display: grid; gap: 44px; }
+  .field { position: relative; border-bottom: 1px solid var(--line-2); transition: border-color .3s; }
+  .field:focus-within { border-color: var(--ink); }
+  .field input {
+    width: 100%; background: none; border: 0; outline: none; color: var(--ink);
+    font: 300 22px/1.2 var(--f-d); padding: 30px 0 14px;
+  }
+  .field label {
+    position: absolute; left: 0; top: 28px; font: 300 22px/1.2 var(--f-d); color: var(--ink);
+    transform-origin: left top; transition: transform .3s var(--ease), color .3s; pointer-events: none;
+  }
+  .field input:focus + label, .field input:not(:placeholder-shown) + label { transform: translateY(-26px) scale(.62); color: var(--dim); }
+  .field .opt { position: absolute; right: 0; top: 34px; }
+  .field.bad { border-color: var(--accent); }
+  fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 20px; }
+  legend { font: 300 22px/1.2 var(--f-d); padding: 0; margin-bottom: 20px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 18px 22px; background: none; color: var(--ink); cursor: pointer;
+    border: 1px solid var(--line-2); font: 500 13px/1 var(--f-t); letter-spacing: 0.06em; text-transform: uppercase;
+    transition: border-color .25s, background .25s;
+  }
+  .chip::before { content: ''; width: 0; height: 8px; background: var(--accent); transition: width .25s var(--ease); }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed="true"] { border-color: var(--ink); background: #232329; }
+  .chip[aria-pressed="true"]::before { width: 8px; }
+  .send {
+    width: 100%; padding: 30px; border: 0; background: var(--accent); color: #fff; cursor: pointer;
+    font: 500 14px/1 var(--f-t); letter-spacing: 0.12em; text-transform: uppercase;
+    transition: background .25s;
+  }
+  .send:hover { background: #ff7d22; }
+  .status { min-height: 1.5em; margin: -24px 0 0; color: var(--dim); font-size: 15px; }
+  .status.err { color: var(--accent); }
+
+  footer {
+    margin-top: clamp(64px, 8vw, 120px);
+    border-top: 1px solid var(--line);
+    padding-block: 28px 36px;
+    display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between;
+  }
+  footer nav { display: flex; gap: 24px; flex-wrap: wrap; }
+  footer a { font: 500 12px/1 var(--f-t); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+
+  /* word masks used by heading reveals */
+  .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+  .w > span { display: inline-block; will-change: transform; }
+  .ch { display: inline-block; }
+
+  /* loader */
+  .loader {
+    position: fixed; inset: 0; z-index: 100; background: #0c0c0e;
+    display: grid; place-content: center; justify-items: center; gap: 22px;
+    transition: transform 1.05s cubic-bezier(.76, 0, .24, 1);
+  }
+  .loader.done { transform: translateY(-100%); }
+  .ld-n { font: 300 clamp(72px, 11vw, 150px)/1 var(--f-t); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .ld-bar { width: min(300px, 64vw); height: 1px; background: var(--line-2); }
+  .ld-bar i { display: block; height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+  .ld-row { display: flex; align-items: center; gap: 10px; }
+  html.loading .hero, html.loading .hero * { animation-play-state: paused !important; }
+
+  /* marquee */
+  .marquee { margin-inline: calc(var(--gut) * -1); border-block: 1px solid var(--line); overflow: hidden; padding-block: clamp(18px, 2.4vw, 30px); position: relative; z-index: 2; background: var(--bg); }
+  .mq-track { display: flex; width: max-content; will-change: transform; }
+  .mq-set { display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); padding-right: clamp(24px, 3vw, 48px); }
+  .mq-set span { font: 300 clamp(26px, 3.4vw, 50px)/1 var(--f-w); text-transform: uppercase; white-space: nowrap; letter-spacing: -.02em; }
+  .mq-set span:nth-of-type(even) { color: transparent; -webkit-text-stroke: 1px rgba(241, 241, 243, .42); }
+  .mq-set i { width: 12px; height: 12px; background: var(--accent); flex: none; }
+
+  /* pinned mechanism panel */
+  .field-panel { position: relative; background: var(--black); height: min(86vh, 760px); min-height: 440px; overflow: hidden; }
+  #mech { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .field-h {
+    position: absolute; inset: 0; margin: 0; z-index: 1; pointer-events: none;
+    display: grid; place-content: center; text-align: center;
+    font: 300 clamp(44px, 7.4vw, 116px)/1 var(--f-d); letter-spacing: -.025em;
+  }
+  .fc { position: absolute; z-index: 2; }
+  .fc.tl { left: 24px; top: 22px; } .fc.tr { right: 24px; top: 22px; }
+  .fc.bl { left: 24px; bottom: 22px; } .fc.br { right: 24px; bottom: 22px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 .w > span, .kcol-in, .hero-glow, .eyebrow, .hero-copy p, .hero-copy .row, .portrait, .portrait-in { animation: none; }
+    .loader { display: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (min-width: 900px) {
+    .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+    .hero-copy { padding-block: 40px; }
+    .portrait { height: min(calc(100vh - 80px), 760px); min-height: 560px; margin-top: 0; margin-left: -12%; }
+  }
+  @media (min-width: 760px) {
+    .intro { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+    .cap-head { grid-template-columns: minmax(0, 1fr) auto; }
+    .xp-row { grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr); }
+    .contact { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+    .kit { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+    .kit-copy { border-top: 0; }
+  }
+  @media (min-width: 1000px) {
+    .work-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: start; }
+    .bot {
+      order: 0; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 88px);
+      height: calc(100vh - 112px); max-height: 820px; min-height: 520px;
+    }
+    .bot-count { font-size: 56px; }
+  }
+  @media (max-width: 759px) {
+    .nav-links { display: none; }
+    .nav .btn { margin-left: auto; }
+    .stat, .cap { min-height: 260px; padding: 28px; }
+    .proj-body { padding: 24px; }
+    .specs b { font-size: 18px; }
+    .kit-circles { padding-inline: 4px; }
+    .fc.br { display: none; }
+  }
+</style>
+
+<div id="top"></div>
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-n" id="ld-n">000</div>
+  <div class="ld-bar"><i id="ld-bar"></i></div>
+  <div class="ld-row"><span class="sq" style="width:8px;height:8px"></span><span class="label dim">Calibrating actuators</span></div>
+</div>
+<script>
+(function () {
+  var d = document.documentElement, l = document.getElementById('loader');
+  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (rm) { l.hidden = true; return; }
+  d.classList.add('loading');
+  var fin = false;
+  function done() {
+    if (fin) return; fin = true;
+    l.classList.add('done'); d.classList.remove('loading');
+    window.__loaderDone = true; window.dispatchEvent(new Event('loader:done'));
+    setTimeout(function () { l.hidden = true; }, 1100);
+  }
+  var n = document.getElementById('ld-n'), b = document.getElementById('ld-bar'), t0 = performance.now(), D = 1250;
+  (function step(now) {
+    var k = Math.min((now - t0) / D, 1), e = 1 - Math.pow(1 - k, 3);
+    n.textContent = ('00' + Math.round(e * 100)).slice(-3); b.style.transform = 'scaleX(' + e + ')';
+    if (k < 1) requestAnimationFrame(step); else setTimeout(done, 180);
+  })(t0);
+  setTimeout(done, 3200);
+})();
+</script>
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top">AS<span>.</span></a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#toolkit">Toolkit</a>
+    </nav>
+    <a class="btn" href="#contact">Contact me <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="sq" style="width:8px;height:8px"></span><span class="label dim">Shah Md. Ahasan Siddique · Lecturer, Mechanical Engineering, MIST</span></div>
+      <h1 aria-label="Designed to move, built to last"><span class="ln" aria-hidden="true"><span class="w"><span style="--i:0">Designed</span></span> <span class="w"><span style="--i:1">to</span></span> <span class="w"><span style="--i:2">move,</span></span></span><span class="ln" aria-hidden="true"><span class="w"><span style="--i:3">built</span></span> <span class="w"><span style="--i:4">to</span></span> <span class="w"><span style="--i:5">last</span></span></span></h1>
+      <p>I teach mechanical engineering at the Military Institute of Science and Technology and build robots that leave the lab: championship Mars rovers, a disinfection robot, a bomb-disposal ROV and a firefighting drone.</p>
+      <div class="row">
+        <a class="btn solid" href="#work">Explore my projects <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="btn" href="#contact">Get in touch <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+    <div class="portrait" id="portrait">
+      <div class="portrait-in" id="portrait-in">
+        <svg id="ph-svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55555d"/><stop offset=".55" stop-color="#2c2c32"/><stop offset="1" stop-color="#18181c"/></linearGradient>
+            <radialGradient id="rimg" cx=".72" cy=".28" r=".55"><stop offset="0" stop-color="#9a9aa3" stop-opacity=".55"/><stop offset="1" stop-color="#9a9aa3" stop-opacity="0"/></radialGradient>
+          </defs>
+          <path id="ph-body" d="M300 150c-70 0-112 58-112 132 0 58 26 110 62 138l-6 56c-4 30-30 44-80 58-90 26-144 70-164 180l-10 86h620l-10-86c-20-110-74-154-164-180-50-14-76-28-80-58l-6-56c36-28 62-80 62-138 0-74-42-132-112-132z" fill="url(#sk)"/>
+          <path d="M300 150c-70 0-112 58-112 132 0 58 26 110 62 138l-6 56c-4 30-30 44-80 58-90 26-144 70-164 180l-10 86h620l-10-86c-20-110-74-154-164-180-50-14-76-28-80-58l-6-56c36-28 62-80 62-138 0-74-42-132-112-132z" fill="url(#rimg)"/>
+        </svg>
+        <img id="ph-img" alt="Portrait of Shah Md. Ahasan Siddique" hidden>
+      </div>
+      <label class="ph-btn" id="ph-btn">Try a portrait photo<input type="file" id="ph-file" accept="image/*"></label>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="mq-track" id="mq"><div class="mq-set"><span>Rover mobility</span><i></i><span>Robotics &amp; control</span><i></i><span>Additive manufacturing</span><i></i><span>Unmanned aerial vehicles</span><i></i><span>Automotive engineering</span><i></i><span>Mechatronics</span><i></i><span>ANSYS simulation</span><i></i><span>SolidWorks CSWA</span><i></i></div><div class="mq-set"><span>Rover mobility</span><i></i><span>Robotics &amp; control</span><i></i><span>Additive manufacturing</span><i></i><span>Unmanned aerial vehicles</span><i></i><span>Automotive engineering</span><i></i><span>Mechatronics</span><i></i><span>ANSYS simulation</span><i></i><span>SolidWorks CSWA</span><i></i></div></div></div>
+
+  <section aria-label="Approach and numbers">
+    <p class="statement rv">A robot is only finished when it works in the field, whether that is a desert rover trial or an empty hospital ward. I design, build and teach for that moment.</p>
+    <div class="stats">
+      <div class="stat rv"><div class="stat-top"><span class="label">Podiums</span></div><div class="stat-num" data-to="3">3</div><p>International robotics podiums, including two championships</p></div>
+      <div class="stat rv"><div class="stat-top"><span class="label">Papers</span></div><div class="stat-num" data-to="5">5</div><p>Journal and conference papers, two in IEEE Access</p></div>
+      <div class="stat rv"><div class="stat-top"><span class="label">Courses</span></div><div class="stat-num" data-to="13">13</div><p>Undergraduate courses conducted at MIST, from robotics theory to machine shop</p></div>
+      <div class="stat rv"><div class="stat-top"><span class="label">Perfect score</span><span class="sq"></span></div><div class="stat-num" data-to="100">100</div><p>Points in the Equipment Servicing mission at the University Rover Challenge 2021</p></div>
+    </div>
+  </section>
+
+  <section aria-label="Field-ready design">
+    <div class="field-panel" id="field">
+      <canvas id="mech" aria-hidden="true"></canvas>
+      <h2 class="field-h" id="field-h"><span class="fh-in" id="fh-in">Field-ready<br>design</span></h2>
+      <span class="mono fc tl">Fig. 00 · slider-crank</span>
+      <span class="mono fc tr" id="mech-read">θ 000°</span>
+      <span class="label dim fc bl">From CAD to field test</span>
+      <span class="mono fc br">r 80 · l 240 · stroke 160</span>
+    </div>
+  </section>
+
+  <section id="capabilities" aria-label="Capabilities">
+    <div class="cap-head rv">
+      <h2 class="h2">Capabilities</h2>
+      <p>What it takes to get a machine from a napkin sketch to its first field test.</p>
+    </div>
+    <div class="caps">
+      <div class="cap rv"><div class="cap-top"><span class="label">Mechanical design</span><span class="sq"></span></div>
+        <ul><li>SolidWorks, CSWA certified</li><li>Engineering drawing and CAD</li><li>Rover and robot mechanisms</li><li>Machine shop fabrication</li></ul></div>
+      <div class="cap rv"><div class="cap-top"><span class="label">Simulation and testing</span><span class="sq"></span></div>
+        <ul><li>Engineering simulation in ANSYS</li><li>Fluid machinery and heat engines</li><li>Heat treatment of D6A steel</li><li>Chamber pressure testing</li></ul></div>
+      <div class="cap rv"><div class="cap-top"><span class="label">Robotics and control</span><span class="sq"></span></div>
+        <ul><li>Mobile robots and rovers</li><li>Robotic arms and grippers</li><li>Control engineering</li><li>Mechatronics</li></ul></div>
+      <div class="cap rv"><div class="cap-top"><span class="label">Research and consultancy</span><span class="sq"></span></div>
+        <ul><li>UAVs and ROVs</li><li>Additive manufacturing</li><li>Stage inspection for public projects</li><li>Defence equipment assessment</li></ul></div>
+    </div>
+  </section>
+
+  <section id="work" aria-label="Selected work">
+    <div class="work-head rv">
+      <h2 class="h2">Selected work</h2>
+      <span class="label dim">05 projects · 2020 to 2024</span>
+    </div>
+    <div class="work-grid">
+      <div class="projects" id="projects">
+        <article class="proj" data-title="Phoenix, a Mars rover for URC 2021">
+          <div class="draw"><canvas data-draw="rover"></canvas><span class="mono">Fig. 01 · side elevation</span></div>
+          <div class="proj-body">
+            <div class="proj-meta"><span class="proj-idx">01</span><span class="proj-cat">Robotics · University Rover Challenge · 2021</span></div>
+            <h3>Phoenix, a Mars rover for URC 2021</h3>
+            <p>Vice team leader and mechanical sub-system lead for MIST Mongol Barota. Phoenix scored 92.78% in the System Acceptance Review, against a 77.7% bar, and topped the URC 2021 Virtual Final with 180 points.</p>
+            <div class="specs"><div><b>92.78%</b><span>SAR score</span></div><div><b>180</b><span>Final score</span></div><div><b>Champion</b><span>URC 2021</span></div></div>
+            <div class="proj-foot"><div class="tools"><span>Mechanical lead</span><span>Rocker-bogie</span><span>IEEE Access</span></div><button class="go" type="button" aria-label="Open the Phoenix rover project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+          </div>
+        </article>
+        <article class="proj" data-title="UVC-PURGE disinfection robot">
+          <div class="draw"><canvas data-draw="uvc"></canvas><span class="mono">Fig. 02 · front elevation</span></div>
+          <div class="proj-body">
+            <div class="proj-meta"><span class="proj-idx">02</span><span class="proj-cat">Medical robotics · UK-RAS challenge · 2020</span></div>
+            <h3>UVC-PURGE disinfection robot</h3>
+            <p>A semi-autonomous robot with six T5 UVC lamps that disinfects a 12 × 16 ft room in two to three minutes while steering around obstacles. It runs from a phone or computer and costs under $800 to build.</p>
+            <div class="specs"><div><b>6 × 254 nm</b><span>UVC lamps</span></div><div><b>2–3 min</b><span>Per room</span></div><div><b>&lt; $800</b><span>Build cost</span></div></div>
+            <div class="proj-foot"><div class="tools"><span>Champion, UK-RAS 2020</span><span>£5,000 prize</span><span>IEEE Access</span></div><button class="go" type="button" aria-label="Open the UVC-PURGE project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+          </div>
+        </article>
+        <article class="proj" data-title="Measuring and pick-and-place robot arms">
+          <div class="draw"><canvas data-draw="arm"></canvas><span class="mono">Fig. 03 · probe path</span></div>
+          <div class="proj-body">
+            <div class="proj-meta"><span class="proj-idx">03</span><span class="proj-cat">Robotics research · Thesis and ICMEAS · 2021 to 2022</span></div>
+            <h3>Measuring and pick-and-place robot arms</h3>
+            <p>My undergraduate thesis: a four-degree-of-freedom arm with an electromechanical contact probe that measures surface points to rebuild objects in 3D. A follow-up pick-and-place study won Overall Best Conference Paper at ICMEAS 2022.</p>
+            <div class="specs"><div><b>4 DOF</b><span>Robotic arm</span></div><div><b>Contact</b><span>Probe digitizing</span></div><div><b>Best paper</b><span>ICMEAS 2022</span></div></div>
+            <div class="proj-foot"><div class="tools"><span>Undergraduate thesis</span><span>3D reconstruction</span><span>Experimental study</span></div><button class="go" type="button" aria-label="Open the robot arm project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+          </div>
+        </article>
+        <article class="proj" data-title="MIST X1, an ROV for bomb disposal">
+          <div class="draw"><canvas data-draw="iedd"></canvas><span class="mono">Fig. 04 · side elevation</span></div>
+          <div class="proj-body">
+            <div class="proj-meta"><span class="proj-idx">04</span><span class="proj-cat">Defence robotics · IE&amp;I and MIST</span></div>
+            <h3>MIST X1, an ROV for bomb disposal</h3>
+            <p>A remotely operated vehicle for Improvised Explosive Device Disposal operations, built for the Bangladesh Army. Related MIST research work covers the controlling unit and gripping claw for the BSJX1 ROV.</p>
+            <div class="specs"><div><b>IEDD</b><span>Mission</span></div><div><b>Remote</b><span>Operation</span></div><div><b>Gripping claw</b><span>BSJX1 ROV</span></div></div>
+            <div class="proj-foot"><div class="tools"><span>Defence R&amp;D</span><span>Manipulator</span><span>Control unit</span></div><button class="go" type="button" aria-label="Open the MIST X1 project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+          </div>
+        </article>
+        <article class="proj" data-title="Firefighting UAV">
+          <div class="draw"><canvas data-draw="uav"></canvas><span class="mono">Fig. 05 · supply line</span></div>
+          <div class="proj-body">
+            <div class="proj-meta"><span class="proj-idx">05</span><span class="proj-cat">Aerial robotics · Integrated development project</span></div>
+            <h3>Firefighting UAV</h3>
+            <p>A firefighting drone fed by a ground station that pumps extinguisher fluid up a supply line, built to fight fires 70 to 120 m above the ground.</p>
+            <div class="specs"><div><b>70–120 m</b><span>Working height</span></div><div><b>Ground</b><span>Fluid supply</span></div><div><b>UAV</b><span>Platform</span></div></div>
+            <div class="proj-foot"><div class="tools"><span>Undergraduate project</span><span>Drone design</span><span>Fluid supply</span></div><button class="go" type="button" aria-label="Open the firefighting UAV project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="bot" id="bot" aria-label="Rover that follows your cursor">
+        <canvas id="robot" aria-hidden="true"></canvas>
+        <div class="bot-cap">
+          <span class="label dim">Now viewing</span>
+          <div class="bot-count"><span id="bot-n">01</span> <small>/ 05</small></div>
+          <div class="bot-title" id="bot-t">Phoenix, a Mars rover for URC 2021</div>
+        </div>
+        <div class="bot-foot">
+          <span class="mono" id="bot-read">Yaw +00.0° · Pitch +00.0°</span>
+          <span class="mono" id="bot-mode">Phoenix · Driving</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="experience" aria-label="Experience">
+    <div class="work-head rv">
+      <h2 class="h2">Experience</h2>
+      <span class="label dim">Teaching, teams and education</span>
+    </div>
+    <div class="xp">
+      <div class="xp-row rv"><span class="xp-yr">Current</span><div><div class="xp-role">Lecturer, Mechanical Engineering</div><div class="xp-org">Military Institute of Science and Technology</div></div><p>Conduct 13 undergraduate courses, including Mechatronics Theory, Robotics Theory and Control Engineering. Supervise final-year robotics projects and consult for CATS ME MIST.</p></div>
+      <div class="xp-row rv"><span class="xp-yr">2022</span><div><div class="xp-role">Faculty Adviser</div><div class="xp-org">MIST Mongol Barota rover team</div></div><p>Advised the team to 2nd runners-up at the Anatolian Rover Challenge 2022 in Turkey with Phoenix v2.0.</p></div>
+      <div class="xp-row rv"><span class="xp-yr">2021</span><div><div class="xp-role">Vice Team Leader and Mechanical Lead</div><div class="xp-org">MIST Mongol Barota, University Rover Challenge</div></div><p>Led mechanical design for Phoenix, champion of the URC 2021 Virtual Final organized by The Mars Society.</p></div>
+      <div class="xp-row rv"><span class="xp-yr">2018 to 2024</span><div><div class="xp-role">B.Sc. and M.Sc. Mechanical Engineering</div><div class="xp-org">Military Institute of Science and Technology</div></div><p>B.Sc. 2018 to 2022 with MIST Dean&rsquo;s List Honors 2021. M.Sc. in progress since April 2022.</p></div>
+      <div class="xp-row rv"><span class="xp-yr">Credentials</span><div><div class="xp-role">Certifications and memberships</div><div class="xp-org">CSWA · CSCA · ASME · IEB</div></div><p>Certified SolidWorks Associate. Certified Supply Chain Analyst with 95% marks. Member of ASME and Associate Member of the Institution of Engineers, Bangladesh.</p></div>
+    </div>
+  </section>
+
+  <section id="toolkit" aria-label="Toolkit">
+    <div class="kit rv">
+      <div class="kit-circles" aria-label="Tools and subjects"><div class="kcol"><div class="kcol-in"><div class="circ">SolidWorks</div><div class="circ">ANSYS</div><div class="circ">CAD drawing</div><div class="circ">Machine shop</div><div class="circ">SolidWorks</div><div class="circ">ANSYS</div><div class="circ">CAD drawing</div><div class="circ">Machine shop</div></div></div><div class="kcol rev"><div class="kcol-in"><div class="circ">3D printing</div><div class="circ">Control systems</div><div class="circ">Mechatronics</div><div class="circ">Fluid machinery</div><div class="circ">3D printing</div><div class="circ">Control systems</div><div class="circ">Mechatronics</div><div class="circ">Fluid machinery</div></div></div><div class="kcol"><div class="kcol-in"><div class="circ">Heat engines</div><div class="circ">Automobiles</div><div class="circ">UAV systems</div><div class="circ">ROV systems</div><div class="circ">Heat engines</div><div class="circ">Automobiles</div><div class="circ">UAV systems</div><div class="circ">ROV systems</div></div></div></div>
+      <div class="kit-copy">
+        <h2 class="h2">Toolkit</h2>
+        <p>The software, workshop skills and subjects I use in research and teach in the classroom.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-label="Contact">
+    <div class="contact">
+      <div class="contact-l">
+        <h2 class="h2">Get in touch</h2>
+        <p>Research collaboration, a student project, or an engineering consultancy? Send me a note.</p>
+        <div class="mail"><code id="mail">ahasan@me.mist.ac.bd</code><button class="copy" type="button" id="copy">Copy</button></div>
+      </div>
+      <form id="form" novalidate>
+        <div class="field" id="f-email"><input id="email" name="email" type="email" placeholder=" " autocomplete="email" required><label for="email">Email *</label></div>
+        <div class="field" id="f-name"><input id="name" name="name" type="text" placeholder=" " autocomplete="name" required><label for="name">Full name *</label></div>
+        <fieldset>
+          <legend>What can I help with? *</legend>
+          <div class="chips" id="chips">
+            <button type="button" class="chip" aria-pressed="false">Research collaboration</button>
+            <button type="button" class="chip" aria-pressed="false">Project supervision</button>
+            <button type="button" class="chip" aria-pressed="false">Consultancy</button>
+            <button type="button" class="chip" aria-pressed="false">Robotics competition</button>
+            <button type="button" class="chip" aria-pressed="false">Talk or workshop</button>
+          </div>
+        </fieldset>
+        <div class="field"><input id="source" name="source" type="text" placeholder=" "><label for="source">How did you find me?</label><span class="label dim opt">Optional</span></div>
+        <button class="send" type="submit">Send</button>
+        <p class="status" id="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span class="label dim">© 2026 Shah Md. Ahasan Siddique</span>
+    <nav aria-label="Publications">
+      <a href="https://doi.org/10.1109/ACCESS.2022.3163243" target="_blank" rel="noopener">UVC-PURGE paper</a>
+      <a href="https://doi.org/10.1109/ACCESS.2022.3170908" target="_blank" rel="noopener">Phoenix paper</a>
+      <a href="#top">Back to top ↑</a>
+    </nav>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  // ---------- nav border on scroll
+  var nav = document.getElementById('nav');
+  var lastNavY = 0;
+  function onScroll() {
+    var y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 8);
+    if (Math.abs(y - lastNavY) > 6) { nav.classList.toggle('hide', y > lastNavY && y > 240); lastNavY = y; }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // ---------- shared pointer
+  var P = { x: window.innerWidth * 0.3, y: window.innerHeight * 0.5, last: -99, has: false };
+  window.addEventListener('pointermove', function (e) { P.x = e.clientX; P.y = e.clientY; P.last = performance.now() / 1000; P.has = true; }, { passive: true });
+
+  // ---------- canvas helper
+  function fit(cv) {
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (cv.width !== Math.round(w * DPR) || cv.height !== Math.round(h * DPR)) { cv.width = Math.round(w * DPR); cv.height = Math.round(h * DPR); }
+    var ctx = cv.getContext('2d'); ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    return { ctx: ctx, w: w, h: h };
+  }
+  var INK = 'rgba(236,236,240,0.62)', FAINT = 'rgba(236,236,240,0.16)', ACC = '#ff6a00', TXT = '#6f6f79';
+
+  // ---------- hero portrait: gentle parallax + try-a-photo
+  var pin = document.getElementById('portrait-in');
+  if (!reduce) window.addEventListener('pointermove', function (e) {
+    var dx = (e.clientX / window.innerWidth - 0.5) * -14, dy = (e.clientY / window.innerHeight - 0.5) * -8;
+    pin.style.transform = 'translate3d(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px,0) scale(1.02)';
+  }, { passive: true });
+  document.getElementById('ph-file').addEventListener('change', function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      var img = document.getElementById('ph-img'); img.src = rd.result; img.hidden = false;
+      document.getElementById('ph-svg').style.display = 'none';
+      document.getElementById('ph-btn').hidden = true;
+    };
+    rd.readAsDataURL(f);
+  });
+
+  // ---------- project drawings (520 x 300 design space)
+  function space(cv) {
+    var f = fit(cv), c = f.ctx, s = Math.min(f.w / 520, f.h / 300) * 0.92;
+    c.clearRect(0, 0, f.w, f.h);
+    c.fillStyle = 'rgba(255,255,255,0.05)';
+    for (var x = 12; x < f.w; x += 24) for (var y = 12; y < f.h; y += 24) c.fillRect(x, y, 1, 1);
+    c.translate((f.w - 520 * s) / 2, (f.h - 300 * s) / 2 + 8 * s); c.scale(s, s);
+    c.lineWidth = 1.25 / s; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.font = (10 / s) + 'px "IBM Plex Mono", monospace';
+    c.s = s;
+    return c;
+  }
+  function ln(c, pts, col) { c.strokeStyle = col || INK; c.beginPath(); c.moveTo(pts[0], pts[1]); for (var i = 2; i < pts.length; i += 2) c.lineTo(pts[i], pts[i + 1]); c.stroke(); }
+  function circ(c, x, y, r, col, fill) { c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); if (fill) { c.fillStyle = fill; c.fill(); } c.strokeStyle = col || INK; c.stroke(); }
+  function dim(c, x1, x2, y, label) {
+    c.strokeStyle = FAINT; ln(c, [x1, y, x2, y], FAINT); ln(c, [x1, y - 5, x1, y + 5], FAINT); ln(c, [x2, y - 5, x2, y + 5], FAINT);
+    c.fillStyle = TXT; var tw = c.measureText(label).width; c.fillText(label, (x1 + x2) / 2 - tw / 2, y - 7);
+  }
+  function txt(c, s, x, y) { c.fillStyle = TXT; c.fillText(s, x, y); }
+  function gear(c, cx, cy, z, rr, rt, rot, col) {
+    var st = Math.PI * 2 / z; c.beginPath();
+    for (var i = 0; i < z; i++) {
+      var a = rot + i * st;
+      var p = [[rr, a], [rt, a + st * 0.18], [rt, a + st * 0.45], [rr, a + st * 0.63]];
+      for (var k = 0; k < 4; k++) { var X = cx + p[k][0] * Math.cos(p[k][1]), Y = cy + p[k][0] * Math.sin(p[k][1]); if (i === 0 && k === 0) c.moveTo(X, Y); else c.lineTo(X, Y); }
+    }
+    c.closePath(); c.strokeStyle = col || INK; c.stroke();
+  }
+
+  var DRAW = {
+    uvc: function (c, t) {
+      ln(c, [40, 262, 480, 262], FAINT);
+      for (var k = 0; k < 3; k++) {
+        var rr = 40 + ((t * 40 + k * 70) % 210), al = Math.max(0, 1 - rr / 250) * 0.5;
+        c.globalAlpha = al; c.beginPath(); c.arc(260, 140, rr, Math.PI * 0.08, Math.PI * 0.92, true); c.strokeStyle = ACC; c.stroke();
+        c.beginPath(); c.arc(260, 140, rr, Math.PI * 1.08, Math.PI * 1.92, true); c.stroke(); c.globalAlpha = 1;
+      }
+      c.strokeStyle = INK; c.strokeRect(175, 212, 170, 34);
+      circ(c, 200, 250, 11, INK, '#111114'); circ(c, 320, 250, 11, INK, '#111114');
+      c.strokeRect(185, 44, 150, 14); circ(c, 260, 36, 7); ln(c, [260, 29, 260, 22]);
+      ln(c, [192, 58, 192, 212]); ln(c, [328, 58, 328, 212]);
+      for (var i = 0; i < 6; i++) {
+        var x = 205 + i * 22, glow = 0.55 + 0.35 * Math.sin(t * 2 + i * 0.8);
+        c.globalAlpha = glow; c.strokeStyle = ACC;
+        c.beginPath(); c.moveTo(x - 4, 70); c.lineTo(x - 4, 200); c.arc(x, 200, 4, Math.PI, 0, true); c.lineTo(x + 4, 70); c.arc(x, 70, 4, 0, Math.PI, true); c.stroke();
+        c.globalAlpha = 1;
+      }
+      txt(c, 'T5 UVC × 6', 356, 110); txt(c, '254 nm', 356, 126);
+      txt(c, 'CAMERA', 272, 32);
+      dim(c, 175, 345, 284, '12 × 16 FT ROOM · 2–3 MIN');
+    },
+    iedd: function (c, t) {
+      var gy = 250;
+      ln(c, [30, gy, 490, gy], FAINT);
+      c.strokeStyle = INK;
+      c.beginPath(); c.moveTo(110, 206); c.lineTo(290, 206); c.arc(290, 228, 22, -Math.PI / 2, Math.PI / 2); c.lineTo(110, 250); c.arc(110, 228, 22, Math.PI / 2, Math.PI * 1.5); c.stroke();
+      [110, 170, 230, 290].forEach(function (x) { circ(c, x, 228, x === 110 || x === 290 ? 16 : 10, INK, '#111114'); var a = -t * 2.2; ln(c, [x, 228, x + Math.cos(a) * 8, 228 + Math.sin(a) * 8], FAINT); });
+      for (var i = 0; i < 18; i++) { var tx = 110 + ((i * 12 - t * 22) % 180 + 180) % 180; ln(c, [tx, 206, tx + 4, 206], FAINT); ln(c, [tx, 250, tx + 4, 250], FAINT); }
+      c.strokeRect(120, 160, 160, 44);
+      ln(c, [150, 160, 150, 118]); c.strokeRect(136, 104, 28, 14); circ(c, 158, 111, 4);
+      var a1 = -0.55 + 0.08 * Math.sin(t * 0.9), a2 = 0.5 + 0.12 * Math.sin(t * 0.9 + 1);
+      var s0 = [250, 160], p1 = [s0[0] + 110 * Math.cos(a1), s0[1] + 110 * Math.sin(a1)], p2 = [p1[0] + 92 * Math.cos(a2), p1[1] + 92 * Math.sin(a2)];
+      var lw = c.lineWidth;
+      [[s0, p1, 12], [p1, p2, 10]].forEach(function (L) { c.lineWidth = L[2]; c.strokeStyle = INK; c.beginPath(); c.moveTo(L[0][0], L[0][1]); c.lineTo(L[1][0], L[1][1]); c.stroke(); c.lineWidth = L[2] - 2.5 / c.s; c.strokeStyle = '#111114'; c.stroke(); });
+      c.lineWidth = lw;
+      circ(c, s0[0], s0[1], 8, INK, '#111114'); circ(c, p1[0], p1[1], 7, INK, '#111114');
+      var grip = 0.35 + 0.15 * Math.sin(t * 1.4);
+      ln(c, [p2[0], p2[1], p2[0] + 16 * Math.cos(a2 - grip), p2[1] + 16 * Math.sin(a2 - grip)], ACC);
+      ln(c, [p2[0], p2[1], p2[0] + 16 * Math.cos(a2 + grip), p2[1] + 16 * Math.sin(a2 + grip)], ACC);
+      c.setLineDash([4, 4]); c.strokeStyle = ACC; c.strokeRect(404, 226, 40, 24); c.setLineDash([]);
+      txt(c, 'SUSPECT OBJECT', 392, 274); txt(c, 'GRIPPING CLAW', 330, 150); txt(c, 'CAMERA', 110, 96);
+    },
+    uav: function (c, t) {
+      var gy = 262, bob = Math.sin(t * 1.6) * 4, dx = 250, dy = 70 + bob;
+      ln(c, [30, gy, 490, gy], FAINT);
+      c.strokeStyle = INK; c.strokeRect(52, 232, 56, 30); ln(c, [62, 232, 62, 222, 98, 222, 98, 232]);
+      txt(c, 'GROUND STATION', 40, 284);
+      c.setLineDash([5, 5]); c.lineDashOffset = t * 20; c.strokeStyle = 'rgba(236,236,240,0.45)';
+      c.beginPath(); c.moveTo(80, 222); c.bezierCurveTo(120, 150, 190, 120, dx, dy + 14); c.stroke(); c.setLineDash([]); c.lineDashOffset = 0;
+      c.strokeStyle = INK; c.strokeRect(dx - 22, dy - 6, 44, 16);
+      ln(c, [dx - 22, dy, dx - 62, dy - 6]); ln(c, [dx + 22, dy, dx + 62, dy - 6]);
+      [dx - 62, dx + 62].forEach(function (x) {
+        ln(c, [x, dy - 6, x, dy - 12]);
+        var sw = 18 + 10 * Math.abs(Math.sin(t * 22 + x));
+        ln(c, [x - sw, dy - 13, x + sw, dy - 13], 'rgba(236,236,240,0.4)');
+      });
+      ln(c, [dx - 12, dy + 10, dx - 16, dy + 22]); ln(c, [dx + 12, dy + 10, dx + 16, dy + 22]);
+      ln(c, [dx + 22, dy + 6, dx + 40, dy + 14]);
+      c.strokeStyle = INK; c.strokeRect(380, 40, 90, 222);
+      for (var r = 0; r < 6; r++) for (var q = 0; q < 2; q++) c.strokeRect(392 + q * 40, 54 + r * 34, 26, 18);
+      for (var k = 0; k < 7; k++) {
+        var ph = ((t * 1.3 + k / 7) % 1);
+        var x0 = dx + 40, y0 = dy + 14, x1 = 386, y1 = 86 + k * 5;
+        c.globalAlpha = 0.25 + 0.6 * (1 - ph); c.strokeStyle = ACC;
+        c.beginPath(); c.moveTo(x0 + (x1 - x0) * ph, y0 + (y1 - y0) * ph); c.lineTo(x0 + (x1 - x0) * Math.min(1, ph + 0.1), y0 + (y1 - y0) * Math.min(1, ph + 0.1)); c.stroke();
+      }
+      c.globalAlpha = 1;
+      ln(c, [346, gy, 346, 86], FAINT); ln(c, [340, gy, 352, gy], FAINT); ln(c, [340, 86, 352, 86], FAINT);
+      txt(c, '70–120 m', 300, 176);
+    },
+    rover: function (c, t) {
+      var gy = 240;
+      ln(c, [30, gy, 490, gy], FAINT);
+      for (var i = 0; i < 20; i++) { var x = ((i * 26 - t * 26) % 520 + 520) % 520; if (x > 30 && x < 480) ln(c, [x, gy + 2, x - 8, gy + 10], FAINT); }
+      var W = [[130, 206], [260, 206], [390, 206]];
+      W.forEach(function (p) {
+        circ(c, p[0], p[1], 34, INK, '#111114'); circ(c, p[0], p[1], 10);
+        for (var k = 0; k < 5; k++) { var a = t * 1.1 + k * Math.PI * 2 / 5; ln(c, [p[0] + Math.cos(a) * 10, p[1] + Math.sin(a) * 10, p[0] + Math.cos(a) * 30, p[1] + Math.sin(a) * 30], FAINT); }
+        for (var q = 0; q < 16; q++) { var b = t * 1.1 + q * Math.PI / 8; ln(c, [p[0] + Math.cos(b) * 34, p[1] + Math.sin(b) * 34, p[0] + Math.cos(b) * 38, p[1] + Math.sin(b) * 38]); }
+      });
+      ln(c, [190, 160, 130, 206], INK); ln(c, [190, 160, 260, 206], INK);
+      c.lineWidth *= 1.3; ln(c, [390, 206, 300, 150, 190, 160], ACC); c.lineWidth /= 1.3;
+      circ(c, 300, 150, 6, ACC, '#111114'); circ(c, 190, 160, 5, INK, '#111114');
+      c.strokeStyle = INK; c.strokeRect(175, 104, 200, 40);
+      for (var v = 0; v < 6; v++) ln(c, [200 + v * 9, 114, 200 + v * 9, 134], FAINT);
+      c.strokeRect(128, 110, 40, 24); for (var fn = 0; fn < 4; fn++) ln(c, [132 + fn * 10, 106, 132 + fn * 10, 138], FAINT);
+      ln(c, [340, 104, 340, 58]); c.strokeRect(304, 22, 72, 36);
+      circ(c, 328, 40, 6); circ(c, 352, 40, 6);
+      ln(c, [240, 104, 240, 84]);
+      c.beginPath(); for (var hx = 0; hx < 7; hx++) { var ha = hx * Math.PI / 3 + 0.3; c.lineTo(240 + Math.cos(ha) * 16, 72 + Math.sin(ha) * 7); } c.stroke();
+      dim(c, 130, 390, 272, 'SIX-WHEEL ROCKER-BOGIE');
+      txt(c, 'ROCKER', 402, 150);
+    },
+    upright: function (c, t) {
+      var O = [[200, 40], [320, 40], [352, 118], [336, 196], [300, 262], [220, 262], [186, 196], [170, 118]];
+      var cx = 260, cy = 150, R = 36;
+      c.beginPath(); O.forEach(function (p, i) { if (i) c.lineTo(p[0], p[1]); else c.moveTo(p[0], p[1]); }); c.closePath(); c.strokeStyle = INK; c.stroke();
+      ln(c, [336, 176, 440, 182, 440, 204, 322, 222]);
+      circ(c, 426, 193, 7);
+      O.forEach(function (p, i) {
+        var a = Math.atan2(p[1] - cy, p[0] - cx);
+        ln(c, [p[0], p[1], cx + Math.cos(a) * R, cy + Math.sin(a) * R], FAINT);
+        var q = O[(i + 1) % O.length], b = Math.atan2(q[1] - cy, q[0] - cx);
+        ln(c, [p[0], p[1], cx + Math.cos(b) * R, cy + Math.sin(b) * R], FAINT);
+      });
+      circ(c, cx, cy, R, ACC, '#111114'); circ(c, cx, cy, R - 9, ACC);
+      [[218, 62, 7], [302, 62, 7], [238, 244, 6], [282, 244, 6]].forEach(function (h) { circ(c, h[0], h[1], h[2], INK, '#111114'); });
+      var sy = 40 + ((t * 36) % 222);
+      c.globalAlpha = 0.5; ln(c, [150, sy, 460, sy], ACC); c.globalAlpha = 1;
+      dim(c, 200, 320, 24, '120');
+      txt(c, 'Ø 72 BEARING BORE', 330, 110);
+      txt(c, 'SF 1.8 · 7075-T6', 30, 280);
+    },
+    arm: function (c, t) {
+      var sx = 130, sy = 222;
+      ln(c, [40, 252, 480, 252], FAINT);
+      c.strokeStyle = INK; c.strokeRect(92, 232, 76, 20);
+      var A1 = 1.2 + 0.2 * Math.sin(t * 0.7), A2 = A1 - 1.35 + 0.28 * Math.sin(t * 0.7 + 1.2), A3 = A2 - 0.55 + 0.25 * Math.sin(t * 0.7 + 2.2);
+      var L = [110, 92, 40];
+      var p1 = [sx + L[0] * Math.cos(A1), sy - L[0] * Math.sin(A1)];
+      var p2 = [p1[0] + L[1] * Math.cos(A2), p1[1] - L[1] * Math.sin(A2)];
+      var p3 = [p2[0] + L[2] * Math.cos(A3), p2[1] - L[2] * Math.sin(A3)];
+      c.setLineDash([3 / c.s * c.s, 5]); c.strokeStyle = 'rgba(255,106,0,0.55)';
+      c.beginPath(); c.arc(sx, sy, 242, -Math.PI * 0.5, -0.02); c.stroke(); c.setLineDash([]);
+      function link(a, b, wdt) {
+        var lw = c.lineWidth;
+        c.lineWidth = wdt; c.strokeStyle = INK; c.beginPath(); c.moveTo(a[0], a[1]); c.lineTo(b[0], b[1]); c.stroke();
+        c.lineWidth = wdt - 2.5 / c.s; c.strokeStyle = '#111114'; c.stroke();
+        c.lineWidth = lw;
+      }
+      link([sx, sy], p1, 18); link(p1, p2, 15); link(p2, p3, 11);
+      [[sx, sy, 10], [p1[0], p1[1], 9], [p2[0], p2[1], 7]].forEach(function (j) { circ(c, j[0], j[1], j[2], INK, '#111114'); circ(c, j[0], j[1], 2.5, INK); });
+      var ga = A3;
+      ln(c, [p3[0], p3[1], p3[0] + 14 * Math.cos(ga + 0.5), p3[1] - 14 * Math.sin(ga + 0.5)], ACC);
+      ln(c, [p3[0], p3[1], p3[0] + 14 * Math.cos(ga - 0.5), p3[1] - 14 * Math.sin(ga - 0.5)], ACC);
+      txt(c, 'PROBE PATH', 372, 150);
+      txt(c, 'J1', sx + 16, sy + 4); txt(c, 'J2', p1[0] + 13, p1[1] + 4); txt(c, 'J3', p2[0] + 11, p2[1] + 4);
+    },
+    hx: function (c, t) {
+      c.strokeStyle = INK;
+      c.beginPath(); c.moveTo(130, 90); c.lineTo(390, 90); c.arc(390, 150, 60, -Math.PI / 2, Math.PI / 2); c.lineTo(130, 210); c.arc(130, 150, 60, Math.PI / 2, Math.PI * 1.5); c.stroke();
+      ln(c, [124, 90, 124, 210]); ln(c, [396, 90, 396, 210]);
+      for (var i = 0; i < 6; i++) { var y = 108 + i * 17; ln(c, [124, y, 396, y], FAINT); }
+      [160, 200, 240, 280, 320, 360].forEach(function (x, i) { if (i % 2 === 0) ln(c, [x, 90, x, 176]); else ln(c, [x, 124, x, 210]); });
+      c.strokeRect(132, 66, 18, 24); c.strokeRect(372, 210, 18, 24);
+      c.setLineDash([6, 6]); c.lineDashOffset = -t * 22; c.lineWidth *= 1.3;
+      ln(c, [141, 60, 141, 194, 180, 194, 180, 106, 220, 106, 220, 194, 260, 194, 260, 106, 300, 106, 300, 194, 340, 194, 340, 106, 381, 106, 381, 240], ACC);
+      c.setLineDash([]); c.lineWidth /= 1.3; c.lineDashOffset = 0;
+      txt(c, 'OIL IN', 158, 64); txt(c, 'OIL OUT', 398, 238);
+      dim(c, 70, 450, 272, 'L 1 800');
+      txt(c, 'ΔP −22%', 30, 40);
+    },
+    gear: function (c, t) {
+      var cx = 260, cy = 148, m = 4.1;
+      var zs = 12, zp = 18, zr = 48, rs = zs * m / 2, rp = zp * m / 2, rr = zr * m / 2;
+      var th = t * 0.8, car = th * zs / (zs + zr);
+      circ(c, cx, cy, rr + 16);
+      gear(c, cx, cy, zr, rr + 4, rr - 4, 0);
+      gear(c, cx, cy, zs, rs - 4, rs + 4, th);
+      var pc = [];
+      for (var i = 0; i < 3; i++) {
+        var a = car + i * Math.PI * 2 / 3, px = cx + (rs + rp) * Math.cos(a), py = cy + (rs + rp) * Math.sin(a);
+        pc.push([px, py]);
+        var spin = car - (th - car) * zs / zp + Math.PI / zp;
+        gear(c, px, py, zp, rp - 4, rp + 4, spin, 'rgba(236,236,240,0.45)');
+        circ(c, px, py, 6, INK, '#111114');
+      }
+      c.lineWidth *= 1.3; ln(c, [pc[0][0], pc[0][1], pc[1][0], pc[1][1], pc[2][0], pc[2][1], pc[0][0], pc[0][1]], ACC); c.lineWidth /= 1.3;
+      circ(c, cx, cy, 8, ACC, '#111114');
+      txt(c, 'i = 5 : 1', 30, 40); txt(c, 'z 12 / 18 / 48', 30, 56); txt(c, 'm 1.0', 30, 72);
+      txt(c, 'CARRIER', 400, 250);
+    }
+  };
+
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.proj'));
+  var drawCanvases = cards.map(function (card) { return card.querySelector('canvas'); });
+  var drawT = drawCanvases.map(function (_, i) { return 0.8 + i * 0.6; });
+  function paint(i) { var cv = drawCanvases[i]; if (!cv.clientWidth) return; var c = space(cv); DRAW[cv.dataset.draw](c, drawT[i]); }
+  function paintAll() { for (var i = 0; i < drawCanvases.length; i++) paint(i); }
+
+  // ---------- active project tracking
+  var active = 0, botN = document.getElementById('bot-n'), botT = document.getElementById('bot-t');
+  function setActive(i) {
+    if (i === active && cards[i].classList.contains('on')) return;
+    active = i;
+    cards.forEach(function (c, k) { c.classList.toggle('on', k === i); });
+    botN.textContent = ('0' + (i + 1)).slice(-2);
+    botT.style.opacity = 0;
+    setTimeout(function () { botT.textContent = cards[i].dataset.title; botT.style.opacity = 1; }, 180);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) setActive(cards.indexOf(e.target)); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    cards.forEach(function (c) { io.observe(c); });
+  }
+  cards.forEach(function (c, i) { c.addEventListener('pointerenter', function () { hovered = i; }); c.addEventListener('pointerleave', function () { hovered = -1; }); });
+  var hovered = -1;
+
+  // ---------- stat count-up
+  if ('IntersectionObserver' in window && !reduce) {
+    var sio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        sio.unobserve(e.target);
+        var el = e.target, to = +el.dataset.to, suf = el.dataset.suf || '', t0 = performance.now();
+        (function step(now) {
+          var k = Math.min((now - t0) / 1300, 1), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          el.textContent = v + suf; if (k < 1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat-num').forEach(function (n) { sio.observe(n); });
+  }
+
+  // ---------- field-ready mechanism (scroll drives the crank)
+  var mech = document.getElementById('mech'), mechRead = document.getElementById('mech-read'), fieldP = 0.55;
+  function drawMech(pr) {
+    var f = fit(mech), c = f.ctx, w = f.w, h = f.h;
+    c.clearRect(0, 0, w, h);
+    var cy = Math.round(h * 0.5) + 0.5, r = Math.min(h * 0.16, 92), L = r * 3;
+    var cx = w < 700 ? w * 0.22 : w * 0.32;
+    var lp = Math.min(1, Math.max(0, (pr + 0.05) / 0.4));
+    var th = -0.7 - pr * Math.PI * 4;
+    var px = cx + r * Math.cos(th), py = cy + r * Math.sin(th);
+    var sx = px + Math.sqrt(L * L - Math.pow(py - cy, 2));
+    c.lineWidth = 1;
+    c.strokeStyle = 'rgba(255,255,255,0.24)';
+    c.beginPath(); c.moveTo(w / 2 - (w / 2) * lp, cy); c.lineTo(w / 2 + (w / 2) * lp, cy); c.stroke();
+    c.globalAlpha = Math.min(1, lp * 1.4);
+    c.strokeStyle = 'rgba(255,255,255,0.08)'; c.beginPath(); c.arc(cx, cy, r, 0, Math.PI * 2); c.stroke();
+    c.setLineDash([2, 6]); c.beginPath(); c.arc(cx, cy, r * 1.1, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * lp); c.stroke(); c.setLineDash([]);
+    c.strokeStyle = 'rgba(255,255,255,0.3)'; c.lineWidth = 1.25;
+    c.beginPath(); c.moveTo(cx, cy); c.lineTo(cx - (px - cx) * 0.55 + (py - cy) * 0.35, cy - (py - cy) * 0.55 - (px - cx) * 0.35); c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.5)'; c.beginPath(); c.moveTo(px, py); c.lineTo(sx, cy); c.stroke();
+    c.strokeStyle = ACC; c.lineWidth = 1.6; c.beginPath(); c.moveTo(cx, cy); c.lineTo(px, py); c.stroke();
+    c.fillStyle = '#000'; c.strokeStyle = 'rgba(255,255,255,0.55)'; c.lineWidth = 1;
+    c.beginPath(); c.arc(px, py, 3.5, 0, Math.PI * 2); c.fill(); c.stroke();
+    c.fillStyle = 'rgba(255,255,255,0.45)'; c.fillRect(cx - 3.5, cy - 3.5, 7, 7);
+    c.fillStyle = '#000'; c.fillRect(sx - 10, cy - 7, 20, 14); c.strokeRect(sx - 9.5, cy - 6.5, 19, 13);
+    var s0 = cx + L - r, s1 = cx + L + r;
+    c.strokeStyle = 'rgba(255,255,255,0.18)';
+    [s0, s1].forEach(function (x) { c.beginPath(); c.moveTo(x + .5, cy + 18); c.lineTo(x + .5, cy + 30); c.stroke(); });
+    c.beginPath(); c.moveTo(s0, cy + 24); c.lineTo(s1, cy + 24); c.stroke();
+    c.globalAlpha = 1;
+    var deg = ((-th * 180 / Math.PI) % 360 + 360) % 360;
+    mechRead.textContent = 'θ ' + ('00' + Math.round(deg)).slice(-3) + '°';
+  }
+  drawMech(fieldP);
+  if (window.ResizeObserver) new ResizeObserver(function () { drawMech(fieldP); }).observe(mech);
+
+  // ---------- velocity marquee
+  var mq = document.getElementById('mq'), mqX = 0, mqW = 0, mqDir = 1, lastSY = window.scrollY;
+  function measureMq() { mqW = mq.firstElementChild.getBoundingClientRect().width; }
+  measureMq(); window.addEventListener('resize', measureMq);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureMq);
+
+  // ---------- 2D loop
+  var last2 = performance.now();
+  function loop2(now) {
+    requestAnimationFrame(loop2);
+    var dt = Math.min((now - last2) / 1000, 0.05); last2 = now;
+    if (reduce) return;
+    var sy = window.scrollY, dy = sy - lastSY; lastSY = sy;
+    if (Math.abs(dy) > 0.5) mqDir = dy > 0 ? 1 : -1;
+    var boost = Math.min(Math.abs(dy) / Math.max(dt, 0.001) * 0.35, 900);
+    if (mqW) { mqX -= (55 + boost) * mqDir * dt; mqX = ((mqX % mqW) - mqW) % mqW; mq.style.transform = 'translate3d(' + mqX.toFixed(2) + 'px,0,0)'; }
+    var i = hovered >= 0 ? hovered : active;
+    drawT[i] += dt; paint(i);
+    if (hovered >= 0 && hovered !== active) { drawT[active] += dt; paint(active); }
+  }
+  if (window.ResizeObserver) { var ro = new ResizeObserver(paintAll); drawCanvases.forEach(function (c) { ro.observe(c); }); }
+  else window.addEventListener('resize', paintAll);
+  paintAll(); setActive(0);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(paintAll);
+  requestAnimationFrame(loop2);
+
+  // ---------- scroll choreography (GSAP + ScrollTrigger)
+  var G = window.gsap, ST = window.ScrollTrigger;
+  function splitWords(el, cls) {
+    el.innerHTML = el.innerHTML.split(/(<br\s*\/?>)/i).map(function (part) {
+      if (/^<br/i.test(part)) return part;
+      return part.split(/(\s+)/).map(function (w) {
+        if (!w || /^\s+$/.test(w)) return w;
+        return cls === 'fw' ? '<span class="fw">' + w + '</span>' : '<span class="w"><span>' + w + '</span></span>';
+      }).join('');
+    }).join('');
+    return el.querySelectorAll(cls === 'fw' ? '.fw' : '.w > span');
+  }
+  function splitChars(el) {
+    el.innerHTML = el.innerHTML.split(/(<br\s*\/?>)/i).map(function (part) {
+      if (/^<br/i.test(part)) return part;
+      return part.split('').map(function (ch) { return ch === ' ' ? ' ' : '<span class="ch">' + ch + '</span>'; }).join('');
+    }).join('');
+    return el.querySelectorAll('.ch');
+  }
+
+  if (G && ST && !reduce) {
+    G.registerPlugin(ST);
+    var fieldH = document.getElementById('field-h');
+    fieldH.setAttribute('aria-label', 'Field-ready design');
+
+    // hero drifts away as you scroll past it
+    G.to('#portrait', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    G.to('.hero-copy', { y: -90, opacity: 0.15, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: 'bottom top', scrub: true } });
+    G.to('.hero-glow', { opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+    // section headings rise word by word
+    document.querySelectorAll('.h2').forEach(function (h) {
+      var ws = splitWords(h);
+      G.from(ws, { yPercent: 118, duration: 1.15, ease: 'power4.out', stagger: 0.08, scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
+    });
+
+    // statement lights up word by word while scrolling
+    ['.statement', '.cap-head p', '.kit-copy p'].forEach(function (sel) {
+      var el = document.querySelector(sel); if (!el) return;
+      var fw = splitWords(el, 'fw');
+      G.fromTo(fw, { color: '#3b3b42' }, { color: '#f1f1f3', ease: 'none', stagger: 0.1,
+        scrollTrigger: { trigger: el, start: 'top 85%', end: 'bottom 45%', scrub: true } });
+    });
+
+    // cards and rows slide up in staggered groups
+    var groups = [['.stat', '.stats'], ['.cap', '.caps'], ['.xp-row', '.xp']];
+    groups.forEach(function (g) {
+      var items = document.querySelectorAll(g[0]);
+      G.from(items, { y: 70, opacity: 0, duration: 1.1, ease: 'power3.out', stagger: 0.12, scrollTrigger: { trigger: g[1], start: 'top 85%', once: true } });
+    });
+    G.from('.stat .sq', { scale: 0, rotation: 90, duration: 0.8, ease: 'back.out(2.2)', delay: 0.5, scrollTrigger: { trigger: '.stats', start: 'top 85%', once: true } });
+    document.querySelectorAll('.cap').forEach(function (cap) {
+      G.from(cap.querySelectorAll('li'), { x: -16, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.06, delay: 0.35, scrollTrigger: { trigger: cap, start: 'top 85%', once: true } });
+    });
+    document.querySelectorAll('.work-head .label').forEach(function (lb) {
+      G.from(lb, { y: 24, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2, scrollTrigger: { trigger: lb, start: 'top 90%', once: true } });
+    });
+    G.from('.kit', { y: 60, opacity: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.kit', start: 'top 85%', once: true } });
+
+    // project cards: drawing wipes open, then the text follows
+    cards.forEach(function (card) {
+      var tl = G.timeline({ scrollTrigger: { trigger: card, start: 'top 82%', once: true } });
+      tl.fromTo(card.querySelector('.draw'), { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.2, ease: 'power4.inOut' })
+        .from(card.querySelectorAll('.proj-body > *'), { y: 26, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.07 }, '-=0.55');
+    });
+    G.from('#bot', { opacity: 0, y: 40, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#work', start: 'top 75%', once: true } });
+
+    // the black panel opens up, pins, and scrolling turns the crank
+    var chars = splitChars(document.getElementById('fh-in'));
+    var ftl = G.timeline({
+      scrollTrigger: {
+        trigger: '#field', start: 'center center', end: '+=140%', pin: true, scrub: 0.6,
+        onUpdate: function (self) { fieldP = self.progress; drawMech(fieldP); }
+      }
+    });
+    ftl.fromTo('#field', { clipPath: 'inset(14% 22% 14% 22%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.35, ease: 'power2.inOut' }, 0)
+       .fromTo(chars, { opacity: 0.06, yPercent: 30 }, { opacity: 1, yPercent: 0, stagger: 0.025, duration: 0.25, ease: 'power2.out' }, 0.2)
+       .to({}, { duration: 0.3 });
+    fieldP = 0; drawMech(0);
+
+    // contact heading and form fields
+    G.from('#form > *', { y: 30, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, scrollTrigger: { trigger: '#form', start: 'top 85%', once: true } });
+
+    // magnetic buttons
+    document.querySelectorAll('.btn, .go').forEach(function (b) {
+      b.addEventListener('pointermove', function (e) {
+        var r = b.getBoundingClientRect();
+        G.to(b, { x: (e.clientX - r.left - r.width / 2) * 0.22, y: (e.clientY - r.top - r.height / 2) * 0.3, duration: 0.4, ease: 'power2.out' });
+      });
+      b.addEventListener('pointerleave', function () { G.to(b, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1, 0.4)' }); });
+    });
+
+    function refresh() { ST.refresh(); }
+    window.addEventListener('loader:done', refresh);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    window.addEventListener('load', refresh);
+  }
+
+  // ---------- contact form
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  chips.forEach(function (ch) { ch.addEventListener('click', function () { ch.setAttribute('aria-pressed', ch.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); }); });
+  var form = document.getElementById('form'), status = document.getElementById('status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = document.getElementById('email'), nm = document.getElementById('name');
+    var okE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()), okN = nm.value.trim().length > 1, okC = chips.some(function (c) { return c.getAttribute('aria-pressed') === 'true'; });
+    document.getElementById('f-email').classList.toggle('bad', !okE);
+    document.getElementById('f-name').classList.toggle('bad', !okN);
+    status.classList.remove('err');
+    if (!okE || !okN || !okC) {
+      status.classList.add('err');
+      status.textContent = !okE ? 'Enter an email address like name@company.com.' : !okN ? 'Add your full name.' : 'Pick at least one topic above.';
+      return;
+    }
+    status.textContent = 'Thanks, ' + nm.value.trim().split(' ')[0] + '. This preview is not connected to a mail service yet, so please also email the address on the left.';
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    var b = this, code = document.getElementById('mail');
+    function sel() { var r = document.createRange(); r.selectNodeContents(code); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected'; }
+    try { navigator.clipboard.writeText(code.textContent).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); }, sel); } catch (err) { sel(); }
+  });
+
+  // =====================================================================
+  // 3D rover
+  // =====================================================================
+  var bot = document.getElementById('bot'), canvas = document.getElementById('robot');
+  var renderer;
+  try {
+    if (typeof THREE === 'undefined') throw new Error('three missing');
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+  } catch (e) { bot.classList.add('nogl'); return; }
+
+  function C(h) { return new THREE.Color(h).convertSRGBToLinear(); }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+
+  var pm = new THREE.PMREMGenerator(renderer);
+  var envScene = new THREE.Scene();
+  envScene.background = C(0x0e0e10);
+  function panel(hex, k, w, h, x, y, z) {
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: C(hex).multiplyScalar(k), side: THREE.DoubleSide }));
+    m.position.set(x, y, z); m.lookAt(0, 0, 0); envScene.add(m);
+  }
+  panel(0xffffff, 4.5, 10, 3, 0, 8, 3);
+  panel(0xd8dce6, 2.6, 6, 7, 8, 2, -3);
+  panel(0xbfc3cc, 2.0, 6, 6, -8, 3, 4);
+  panel(0xff6a00, 0.7, 10, 1.4, 0, -4, -8);
+  scene.environment = pm.fromScene(envScene, 0.04).texture;
+
+  scene.add(new THREE.AmbientLight(0x8a8a96, 0.25));
+  var key = new THREE.DirectionalLight(0xffffff, 0.95); key.position.set(3, 7, -6); scene.add(key);
+  var rim = new THREE.DirectionalLight(0xdfe4ee, 1.5); rim.position.set(-5, 4, 6); scene.add(rim);
+  var fill = new THREE.DirectionalLight(0xb9bcc6, 0.55); fill.position.set(6, 2, -2); scene.add(fill);
+
+  function std(h, o) { o = o || {}; o.color = C(h); return new THREE.MeshStandardMaterial(o); }
+  function phys(h, o) { o = o || {}; o.color = C(h); return new THREE.MeshPhysicalMaterial(o); }
+  var mShell = phys(0x1c1d21, { metalness: 0.3, roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.12, envMapIntensity: 0.8 });
+  var mChassis = phys(0x232429, { metalness: 0.35, roughness: 0.36, clearcoat: 0.8, clearcoatRoughness: 0.2, envMapIntensity: 0.7 });
+  var mPlate = phys(0x09090b, { metalness: 0.1, roughness: 0.18, clearcoat: 1, clearcoatRoughness: 0.06 });
+  var mEye = phys(0xf4f4f7, { metalness: 0, roughness: 0.12, clearcoat: 1, clearcoatRoughness: 0.05 });
+  var mGlass = phys(0x050507, { metalness: 0.2, roughness: 0.05, clearcoat: 1 });
+  var mBlack = std(0x0d0d10, { metalness: 0.7, roughness: 0.38 });
+  var mDark = std(0x26272c, { metalness: 0.85, roughness: 0.38 });
+  var mSteel = std(0x8a8d96, { metalness: 1, roughness: 0.32, envMapIntensity: 0.75 });
+  var mAlu = std(0x74777f, { metalness: 0.95, roughness: 0.42, side: THREE.DoubleSide, envMapIntensity: 0.7 });
+  var mPanel = std(0x3c3e45, { metalness: 0.85, roughness: 0.45, envMapIntensity: 0.7 });
+  var mFoil = std(0x5c5f67, { metalness: 1, roughness: 0.5, envMapIntensity: 0.7 });
+  var mRock = std(0x2a2a2e, { metalness: 0, roughness: 1, flatShading: true, envMapIntensity: 0.3 });
+  var mLed = new THREE.MeshStandardMaterial({ color: C(0xff6a00), emissive: C(0xff6a00), emissiveIntensity: 1.5 });
+
+  function crease(geo, deg) {
+    geo.computeVertexNormals();
+    var p = geo.attributes.position, n = geo.attributes.normal, cnt = p.count;
+    var cos = Math.cos(deg * Math.PI / 180), map = {}, keys = new Array(cnt), i, k;
+    for (i = 0; i < cnt; i++) {
+      k = Math.round(p.getX(i) * 500) + '_' + Math.round(p.getY(i) * 500) + '_' + Math.round(p.getZ(i) * 500);
+      keys[i] = k; (map[k] = map[k] || []).push(i);
+    }
+    var out = new Float32Array(cnt * 3), g, j, sx, sy, sz, ax, ay, az, bx, by, bz, l;
+    for (i = 0; i < cnt; i++) {
+      g = map[keys[i]]; ax = n.getX(i); ay = n.getY(i); az = n.getZ(i); sx = sy = sz = 0;
+      for (j = 0; j < g.length; j++) {
+        bx = n.getX(g[j]); by = n.getY(g[j]); bz = n.getZ(g[j]);
+        if (ax * bx + ay * by + az * bz >= cos) { sx += bx; sy += by; sz += bz; }
+      }
+      l = Math.sqrt(sx * sx + sy * sy + sz * sz) || 1;
+      out[i * 3] = sx / l; out[i * 3 + 1] = sy / l; out[i * 3 + 2] = sz / l;
+    }
+    geo.setAttribute('normal', new THREE.BufferAttribute(out, 3));
+    return geo;
+  }
+  function rbox(w, h, d, r, b) {
+    var iw = w - 2 * b, ih = h - 2 * b, x = -iw / 2, y = -ih / 2, s = new THREE.Shape();
+    r = Math.min(r, iw / 2 - 0.001, ih / 2 - 0.001);
+    s.moveTo(x + r, y); s.lineTo(x + iw - r, y); s.quadraticCurveTo(x + iw, y, x + iw, y + r);
+    s.lineTo(x + iw, y + ih - r); s.quadraticCurveTo(x + iw, y + ih, x + iw - r, y + ih);
+    s.lineTo(x + r, y + ih); s.quadraticCurveTo(x, y + ih, x, y + ih - r);
+    s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y);
+    var depth = Math.max(d - 2 * b, 0.001);
+    var g = new THREE.ExtrudeGeometry(s, { depth: depth, bevelEnabled: true, bevelThickness: b, bevelSize: b, bevelSegments: 5, curveSegments: 8 });
+    g.translate(0, 0, -depth / 2);
+    return crease(g, 50);
+  }
+  function mesh(g, m, x, y, z) { var o = new THREE.Mesh(g, m); o.position.set(x || 0, y || 0, z || 0); return o; }
+  function tube(a, b, r, m) {
+    var A = new THREE.Vector3(a[0], a[1], a[2]), B = new THREE.Vector3(b[0], b[1], b[2]);
+    var d = B.clone().sub(A), len = d.length();
+    var o = new THREE.Mesh(new THREE.CylinderGeometry(r, r, len, 16), m);
+    o.position.copy(A).addScaledVector(d, 0.5);
+    o.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.normalize());
+    return o;
+  }
+  function ball(x, y, z, r, m) { return mesh(new THREE.SphereGeometry(r, 20, 14), m, x, y, z); }
+  function cylX(r, len, m, x, y, z) { var g = new THREE.CylinderGeometry(r, r, len, 28); g.rotateZ(Math.PI / 2); return mesh(g, m, x, y, z); }
+  function cylZ(r, len, m, x, y, z) { var g = new THREE.CylinderGeometry(r, r, len, 28); g.rotateX(Math.PI / 2); return mesh(g, m, x, y, z); }
+
+  var rover = new THREE.Group(); scene.add(rover);
+
+  // chassis
+  rover.add(mesh(rbox(1.9, 0.7, 1.2, 0.08, 0.05), mChassis, 0, 1.15, 0));
+  [1, -1].forEach(function (s) {
+    rover.add(mesh(rbox(1.5, 0.46, 0.03, 0.05, 0.01), mPanel, -0.05, 1.15, s * 0.607));
+    for (var i = 0; i < 7; i++) rover.add(mesh(new THREE.BoxGeometry(0.03, 0.3, 0.01), mBlack, -0.62 + i * 0.09, 1.15, s * 0.628));
+    var g = new THREE.CylinderGeometry(0.06, 0.06, 0.03, 24); g.rotateZ(Math.PI / 2);
+    rover.add(mesh(g, mBlack, 0.96, 0.98, s * 0.42));
+    var g2 = new THREE.CylinderGeometry(0.035, 0.035, 0.034, 24); g2.rotateZ(Math.PI / 2);
+    rover.add(mesh(g2, mGlass, 0.965, 0.98, s * 0.42));
+  });
+  rover.add(mesh(new THREE.BoxGeometry(0.7, 0.02, 0.55), mFoil, -0.35, 1.505, -0.3));
+  rover.add(mesh(rbox(0.5, 0.4, 0.02, 0.04, 0.008).rotateX(Math.PI / 2), mPanel, 0.05, 1.505, 0.36));
+
+  // suspension + wheels
+  var R = 0.36, W = 0.34, wheels = [];
+  function makeWheel() {
+    var g = new THREE.Group();
+    var tread = new THREE.Mesh(new THREE.CylinderGeometry(R, R, W, 48, 1, true), mAlu);
+    tread.rotation.x = Math.PI / 2; g.add(tread);
+    [1, -1].forEach(function (s) {
+      var lip = new THREE.Mesh(new THREE.RingGeometry(R * 0.76, R, 48), mAlu);
+      lip.position.z = s * W / 2; if (s < 0) lip.rotation.y = Math.PI; g.add(lip);
+      var web = new THREE.Mesh(new THREE.CircleGeometry(R * 0.76, 40), mDark);
+      web.position.z = s * (W / 2 - 0.06); if (s < 0) web.rotation.y = Math.PI; g.add(web);
+      g.add(cylZ(R * 0.24, 0.1, mSteel, 0, 0, s * (W / 2 - 0.02)));
+      for (var i = 0; i < 5; i++) {
+        var a = i * Math.PI * 2 / 5 + (s > 0 ? 0 : 0.3);
+        var sp = new THREE.Mesh(new THREE.BoxGeometry(R * 0.56, R * 0.11, 0.035), mAlu);
+        sp.position.set(Math.cos(a) * R * 0.5, Math.sin(a) * R * 0.5, s * (W / 2 - 0.03));
+        sp.rotation.z = a; g.add(sp);
+      }
+    });
+    for (var c = 0; c < 24; c++) {
+      var ca = c * Math.PI * 2 / 24;
+      var cl = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.035, W), mSteel);
+      cl.position.set(Math.cos(ca) * (R + 0.01), Math.sin(ca) * (R + 0.01), 0);
+      cl.rotation.z = ca; g.add(cl);
+    }
+    return g;
+  }
+  var WZ = 0.98, TZ = 0.72;
+  [1, -1].forEach(function (s) {
+    var z = s * TZ;
+    var F = [1.05, R, z], K = [0.55, 1.02, z], Bp = [-0.6, 0.92, z], M = [-0.05, R, z], Rr = [-1.15, R, z];
+    rover.add(tube(F, K, 0.05, mSteel)); rover.add(tube(K, Bp, 0.05, mSteel));
+    rover.add(tube(Bp, M, 0.045, mSteel)); rover.add(tube(Bp, Rr, 0.045, mSteel));
+    [K, Bp].forEach(function (p) { rover.add(ball(p[0], p[1], p[2], 0.075, mDark)); });
+    [F, M, Rr].forEach(function (p) {
+      rover.add(ball(p[0], p[1], p[2], 0.06, mDark));
+      rover.add(tube([p[0], p[1], s * TZ], [p[0], p[1], s * (WZ - 0.1)], 0.05, mDark));
+      var w = makeWheel(); w.position.set(p[0], p[1], s * WZ); rover.add(w); wheels.push(w);
+    });
+    rover.add(tube([0.0, 0.98, s * 0.6], [0.0, 0.98, s * TZ], 0.06, mDark));
+  });
+
+  // RTG
+  var rtg = new THREE.Group(); rtg.position.set(-1.55, 1.15, 0); rover.add(rtg);
+  rtg.add(cylX(0.14, 0.9, mBlack, 0, 0, 0));
+  rtg.add(cylX(0.155, 0.03, mSteel, 0.44, 0, 0));
+  rtg.add(cylX(0.155, 0.03, mSteel, -0.44, 0, 0));
+  for (var f = 0; f < 8; f++) {
+    var th0 = f * Math.PI / 4;
+    var fin = new THREE.Mesh(new THREE.BoxGeometry(0.86, 0.2, 0.018), mDark);
+    fin.position.set(0, Math.cos(th0) * 0.24, Math.sin(th0) * 0.24); fin.rotation.x = th0; rtg.add(fin);
+  }
+  rover.add(tube([-0.95, 1.15, 0], [-1.12, 1.15, 0], 0.07, mDark));
+
+  // high-gain antenna
+  var hga = new THREE.Group(); hga.position.set(-0.55, 1.5, 0.34); rover.add(hga);
+  hga.add(tube([0, 0, 0], [0, 0.34, 0], 0.025, mSteel));
+  hga.add(mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.05, 16), mDark, 0, 0.02, 0));
+  var hgaYaw = new THREE.Group(); hgaYaw.position.y = 0.36; hga.add(hgaYaw);
+  var hgaTilt = new THREE.Group(); hgaTilt.rotation.z = -0.65; hgaYaw.add(hgaTilt);
+  hgaTilt.add(mesh(new THREE.CylinderGeometry(0.31, 0.31, 0.02, 6), mDark, 0, -0.012, 0));
+  hgaTilt.add(mesh(new THREE.CylinderGeometry(0.29, 0.29, 0.02, 6), mAlu, 0, 0.004, 0));
+  for (var ri = 1; ri <= 2; ri++) {
+    var rg = new THREE.Mesh(new THREE.RingGeometry(ri * 0.09, ri * 0.09 + 0.008, 6), mDark);
+    rg.rotation.x = -Math.PI / 2; rg.position.y = 0.016; hgaTilt.add(rg);
+  }
+  hgaTilt.add(tube([0, 0.01, 0], [0, 0.2, 0], 0.014, mSteel));
+  hgaTilt.add(mesh(new THREE.CylinderGeometry(0.03, 0.018, 0.05, 12), mBlack, 0, 0.22, 0));
+
+  // robotic arm
+  var arm = new THREE.Group(); arm.position.set(0.98, 1.22, -0.4); rover.add(arm);
+  arm.add(mesh(new THREE.SphereGeometry(0.09, 20, 14), mDark));
+  arm.add(cylZ(0.075, 0.14, mBlack, 0, 0, 0));
+  arm.add(tube([0, 0, 0], [0.42, 0, 0], 0.045, mSteel));
+  var elbow = new THREE.Group(); elbow.position.set(0.42, 0, 0); arm.add(elbow);
+  elbow.add(cylZ(0.07, 0.13, mBlack, 0, 0, 0));
+  var fore = new THREE.Group(); fore.rotation.z = -0.95; elbow.add(fore);
+  fore.add(tube([0, 0, 0], [0.5, 0, 0], 0.04, mSteel));
+  var wrist = new THREE.Group(); wrist.position.set(0.5, 0, 0); fore.add(wrist);
+  wrist.add(cylX(0.12, 0.12, mDark, 0.03, 0, 0));
+  wrist.add(cylX(0.09, 0.03, mBlack, 0.1, 0, 0));
+  wrist.add(mesh(new THREE.BoxGeometry(0.05, 0.05, 0.07), mBlack, 0.04, 0.13, 0.03));
+  var drill = new THREE.Group(); wrist.add(drill);
+  var bit = new THREE.ConeGeometry(0.04, 0.24, 20); bit.rotateZ(-Math.PI / 2); bit.translate(0.24, 0, 0);
+  drill.add(mesh(bit, mSteel));
+  drill.add(cylX(0.05, 0.08, mBlack, 0.12, 0, 0));
+  wrist.add(cylX(0.028, 0.2, mSteel, 0.2, -0.085, 0));
+
+  // mast + head
+  var mastRoot = new THREE.Group(); mastRoot.position.set(0.5, 1.5, 0); rover.add(mastRoot);
+  mastRoot.add(mesh(new THREE.CylinderGeometry(0.15, 0.17, 0.06, 32), mDark, 0, 0.03, 0));
+  for (var bi = 0; bi < 6; bi++) {
+    var ba = bi * Math.PI / 3;
+    mastRoot.add(mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.02, 8), mSteel, Math.cos(ba) * 0.12, 0.07, Math.sin(ba) * 0.12));
+  }
+  mastRoot.add(tube([0, 0.05, 0], [0, 0.5, 0], 0.055, mDark));
+  var collar = new THREE.Mesh(new THREE.TorusGeometry(0.075, 0.016, 10, 28), mSteel);
+  collar.rotation.x = Math.PI / 2; collar.position.y = 0.5; mastRoot.add(collar);
+  var yawG = new THREE.Group(); yawG.position.y = 0.5; mastRoot.add(yawG);
+  var neck = new THREE.LatheGeometry([
+    new THREE.Vector2(0.001, 0), new THREE.Vector2(0.07, 0), new THREE.Vector2(0.085, 0.05),
+    new THREE.Vector2(0.12, 0.14), new THREE.Vector2(0.165, 0.26), new THREE.Vector2(0.001, 0.26)
+  ], 40);
+  yawG.add(mesh(neck, mBlack));
+  var band = new THREE.Mesh(new THREE.TorusGeometry(0.135, 0.012, 10, 40), mSteel);
+  band.rotation.x = Math.PI / 2; band.position.y = 0.2; yawG.add(band);
+  yawG.add(ball(0, 0.28, 0, 0.1, mBlack));
+
+  var pitchG = new THREE.Group(); pitchG.position.y = 0.46; yawG.add(pitchG);
+  var headGeo = rbox(0.98, 0.56, 0.5, 0.1, 0.07); headGeo.rotateY(Math.PI / 2);
+  pitchG.add(mesh(headGeo, mShell));
+  var plateGeo = rbox(0.84, 0.42, 0.03, 0.07, 0.012); plateGeo.rotateY(Math.PI / 2);
+  pitchG.add(mesh(plateGeo, mPlate, 0.25, 0, 0));
+  var eyes = [];
+  [-1, 1].forEach(function (s) {
+    var socket = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.014, 12, 36), mSteel);
+    socket.rotation.y = Math.PI / 2; socket.position.set(0.268, 0.04, s * 0.2); pitchG.add(socket);
+    var eg = new THREE.Group(); eg.position.set(0.268, 0.04, s * 0.2); pitchG.add(eg);
+    var eb = mesh(new THREE.SphereGeometry(0.085, 32, 20), mEye); eg.add(eb); eyes.push(eb);
+  });
+  [1, -1].forEach(function (s) {
+    var r1 = new THREE.Mesh(new THREE.TorusGeometry(0.08, 0.014, 12, 30), mSteel);
+    r1.position.set(0.03, 0.02, s * 0.492); pitchG.add(r1);
+    pitchG.add(cylZ(0.072, 0.02, mGlass, 0.03, 0.02, s * 0.49));
+  });
+  pitchG.add(mesh(new THREE.CylinderGeometry(0.045, 0.05, 0.16, 20).rotateZ(-Math.PI / 2), mDark, 0.06, 0.3, 0.26));
+  pitchG.add(mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.01, 20).rotateZ(-Math.PI / 2), mGlass, 0.145, 0.3, 0.26));
+  pitchG.add(tube([-0.1, 0.27, -0.38], [-0.1, 0.46, -0.38], 0.01, mSteel));
+  pitchG.add(ball(-0.1, 0.47, -0.38, 0.022, mLed));
+  pitchG.add(ball(0.27, -0.155, -0.34, 0.016, mLed));
+
+  // ground (soft grey pool, particles fade into the panel color)
+  var gcv = document.createElement('canvas'); gcv.width = gcv.height = 256;
+  var gx = gcv.getContext('2d'), grd = gx.createRadialGradient(128, 128, 0, 128, 128, 128);
+  grd.addColorStop(0, 'rgba(255,255,255,0.10)'); grd.addColorStop(0.5, 'rgba(255,255,255,0.035)'); grd.addColorStop(1, 'rgba(255,255,255,0)');
+  gx.fillStyle = grd; gx.fillRect(0, 0, 256, 256);
+  var gtex = new THREE.CanvasTexture(gcv); gtex.encoding = THREE.sRGBEncoding;
+  var pool = new THREE.Mesh(new THREE.PlaneGeometry(12, 12), new THREE.MeshBasicMaterial({ map: gtex, transparent: true, depthWrite: false, toneMapped: false }));
+  pool.rotation.x = -Math.PI / 2; pool.position.y = 0.002; scene.add(pool);
+  [[2.5, 0.12], [3.7, 0.07]].forEach(function (r) {
+    var ring = new THREE.Mesh(new THREE.RingGeometry(r[0] - 0.006, r[0] + 0.006, 160),
+      new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: r[1], depthWrite: false, toneMapped: false }));
+    ring.rotation.x = -Math.PI / 2; ring.position.y = 0.004; scene.add(ring);
+  });
+
+  var BG = C(0x1b1b1f), GR = C(0x9a9aa4);
+  var N = 1400, DOM = 7, dpos = new Float32Array(N * 3), dcol = new Float32Array(N * 3), dk = new Float32Array(N);
+  for (var pi = 0; pi < N; pi++) {
+    dpos[pi * 3] = (Math.random() * 2 - 1) * DOM; dpos[pi * 3 + 1] = 0.006 + Math.random() * 0.01; dpos[pi * 3 + 2] = (Math.random() * 2 - 1) * DOM;
+    dk[pi] = 0.35 + Math.random() * 0.65;
+  }
+  for (var pj = 0; pj < N; pj++) {
+    var dd = Math.sqrt(dpos[pj * 3] * dpos[pj * 3] + dpos[pj * 3 + 2] * dpos[pj * 3 + 2]);
+    var kk = Math.max(0, 1 - dd / 5.8); kk = kk * kk * dk[pj];
+    dcol[pj * 3] = BG.r + (GR.r - BG.r) * kk; dcol[pj * 3 + 1] = BG.g + (GR.g - BG.g) * kk; dcol[pj * 3 + 2] = BG.b + (GR.b - BG.b) * kk;
+  }
+  var dgeo = new THREE.BufferGeometry();
+  dgeo.setAttribute('position', new THREE.BufferAttribute(dpos, 3));
+  dgeo.setAttribute('color', new THREE.BufferAttribute(dcol, 3));
+  scene.add(new THREE.Points(dgeo, new THREE.PointsMaterial({ size: 0.035, vertexColors: true, depthWrite: false, toneMapped: false })));
+
+  var DN = 90, DG = C(0xb4b4bc), dp = new Float32Array(DN * 3), dv = new Float32Array(DN * 3), dc = new Float32Array(DN * 3), dLife = new Float32Array(DN), dMax = new Float32Array(DN);
+  for (var dq = 0; dq < DN; dq++) { dLife[dq] = Math.random() * 1.6; dMax[dq] = 1; dp[dq * 3 + 1] = -5; }
+  var dustGeo = new THREE.BufferGeometry();
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dp, 3));
+  dustGeo.setAttribute('color', new THREE.BufferAttribute(dc, 3));
+  scene.add(new THREE.Points(dustGeo, new THREE.PointsMaterial({ size: 0.055, vertexColors: true, depthWrite: false, toneMapped: false })));
+
+  var TN = 1200, TG = C(0x6c6c75), tp = new Float32Array(TN * 3), tc = new Float32Array(TN * 3), tAge = new Float32Array(TN), tHead = 0;
+  for (var tq = 0; tq < TN; tq++) { tp[tq * 3 + 1] = -5; tAge[tq] = 99; }
+  var trackGeo = new THREE.BufferGeometry();
+  trackGeo.setAttribute('position', new THREE.BufferAttribute(tp, 3));
+  trackGeo.setAttribute('color', new THREE.BufferAttribute(tc, 3));
+  scene.add(new THREE.Points(trackGeo, new THREE.PointsMaterial({ size: 0.05, vertexColors: true, depthWrite: false, toneMapped: false })));
+
+  var rocks = [];
+  for (var rk = 0; rk < 14; rk++) {
+    var rm = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), mRock);
+    rm.position.set((Math.random() * 2 - 1) * DOM, 0, (1.7 + Math.random() * 4) * (Math.random() < 0.5 ? -1 : 1));
+    rm.rotation.set(Math.random() * 3, Math.random() * 3, Math.random() * 3);
+    rm.userData.s = 0.08 + Math.random() * 0.2; rocks.push(rm); scene.add(rm);
+    var rd0 = Math.sqrt(rm.position.x * rm.position.x + rm.position.z * rm.position.z);
+    var fs0 = Math.max(0, 1 - Math.pow(rd0 / 5.8, 3)) * rm.userData.s;
+    rm.scale.set(fs0 * 1.2, fs0 * 0.6, fs0); rm.position.y = fs0 * 0.15;
+  }
+
+  // camera: front of the rover faces screen-left, toward the project list
+  var target = new THREE.Vector3(0.0, 1.1, 0);
+  var camAz = -38, camEl = 12;
+  function placeCamera() {
+    var w = bot.clientWidth, h = bot.clientHeight, aspect = w / h;
+    var tanH = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    var dist = Math.max(5.0 / (2 * tanH), 5.8 / (2 * tanH * aspect));
+    var az = THREE.MathUtils.degToRad(camAz), el = THREE.MathUtils.degToRad(camEl);
+    camera.position.set(target.x + dist * Math.cos(el) * Math.cos(az), target.y + dist * Math.sin(el), target.z + dist * Math.cos(el) * Math.sin(az));
+    camera.lookAt(target);
+  }
+  var small = false;
+  function resize() {
+    var w = Math.max(bot.clientWidth, 1), h = Math.max(bot.clientHeight, 1);
+    small = w < 520;
+    target.y = small ? 0.95 : 1.05;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); placeCamera();
+  }
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(bot); else window.addEventListener('resize', resize);
+  resize();
+
+  var botVisible = true;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { botVisible = es[0].isIntersecting; }).observe(bot);
+
+  var clock = new THREE.Clock(), t = 0, firstPaint = true;
+  var yaw = 0.6, pitch = 0.05, nextBlink = 2.2, blinkT = -1, doubleBlink = false, hudT = 0;
+  var sm = { x: -0.8, y: 0.1 };
+  var v1 = new THREE.Vector3(), v2 = new THREE.Vector3(), v3 = new THREE.Vector3();
+  var ray = new THREE.Raycaster(), plane = new THREE.Plane(), hit = new THREE.Vector3();
+  var read = document.getElementById('bot-read'), modeEl = document.getElementById('bot-mode');
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function wrap(a) { return Math.atan2(Math.sin(a), Math.cos(a)); }
+  var drive = { h: 0, trail: 0, speed: 0 };
+  function sgn(v) { return (v >= 0 ? '+' : '−') + ('0' + Math.abs(v).toFixed(1)).slice(-4); }
+
+  function frame() {
+    requestAnimationFrame(frame);
+    var dt = Math.min(clock.getDelta(), 0.05);
+    if (!botVisible && !firstPaint) return;
+    t += dt;
+    var now = performance.now() / 1000;
+
+    // pointer in the stage's normalized coordinates (can go far outside when cursor is over the projects)
+    var r = bot.getBoundingClientRect();
+    var idle = !P.has || now - P.last > 5;
+    var wx, wy;
+    if (idle) {
+      wx = reduce ? -0.9 : -0.9 + Math.sin(t * 0.45) * 0.8;
+      wy = reduce ? 0.15 : 0.15 + Math.sin(t * 0.33) * 0.25;
+    } else {
+      wx = clamp(((P.x - r.left) / r.width) * 2 - 1, -6, 6);
+      wy = clamp(-(((P.y - r.top) / r.height) * 2 - 1), -3, 3);
+    }
+    var ks = 1 - Math.exp(-dt * 5);
+    sm.x += (wx - sm.x) * ks; sm.y += (wy - sm.y) * ks;
+    camAz = -38 + clamp(sm.x, -1.5, 1) * 3; camEl = 12 + clamp(sm.y, -1, 1) * 1.5;
+    placeCamera();
+
+    // driving mode: rover keeps facing the project list and drives forward; the ground streams past.
+    // It weaves gently (about ±10°) instead of turning around.
+    var V = reduce ? 0.7 : 1.15;
+    var zPos = 0.32 * Math.sin(t * 0.55), zVel = 0.32 * 0.55 * Math.cos(t * 0.55);
+    var xPos = 0.22 * Math.sin(t * 0.21), xVel = 0.22 * 0.21 * Math.cos(t * 0.21);
+    var heading = Math.atan2(-zVel, V + xVel);
+    var dHead = heading - drive.h; drive.h = heading;
+    var stepD = (V + xVel) * dt;
+    rover.position.x = xPos; rover.position.z = zPos;
+    rover.rotation.y = drive.h;
+    wheels.forEach(function (w, wi) { w.rotation.z -= stepD / R; w.position.y = R + Math.max(0, Math.sin(t * 3.4 + wi * 1.7)) * 0.016; });
+    rover.position.y = Math.abs(Math.sin(t * 7)) * 0.006 + Math.sin(t * 1.3) * 0.004;
+    rover.rotation.z = Math.sin(t * 2.1) * 0.012;
+    rover.rotation.x = Math.sin(t * 1.5 + 1) * 0.008 - clamp(dHead / Math.max(dt, 1e-3), -1, 1) * 0.03;
+    hgaYaw.rotation.y = Math.sin(t * 0.2) * 0.5; drill.rotation.x += dt * 1.6; fore.rotation.z = -0.95 + Math.sin(t * 0.5) * 0.04;
+
+    // ground, rocks, tracks and dust all stream backwards at the driving speed
+    var shift = V * dt;
+    for (var i = 0; i < N; i++) {
+      var gx0 = dpos[i * 3] - shift; if (gx0 < -DOM) gx0 += 2 * DOM; dpos[i * 3] = gx0;
+      var gd = Math.sqrt(gx0 * gx0 + dpos[i * 3 + 2] * dpos[i * 3 + 2]);
+      var gk = Math.max(0, 1 - gd / 5.8); gk = gk * gk * dk[i];
+      dcol[i * 3] = BG.r + (GR.r - BG.r) * gk; dcol[i * 3 + 1] = BG.g + (GR.g - BG.g) * gk; dcol[i * 3 + 2] = BG.b + (GR.b - BG.b) * gk;
+    }
+    dgeo.attributes.position.needsUpdate = true; dgeo.attributes.color.needsUpdate = true;
+    rocks.forEach(function (rk2) {
+      var rx = rk2.position.x - shift; if (rx < -DOM) rx += 2 * DOM; rk2.position.x = rx;
+      var rd = Math.sqrt(rx * rx + rk2.position.z * rk2.position.z);
+      var fs = Math.max(0, 1 - Math.pow(rd / 5.8, 3)) * rk2.userData.s;
+      rk2.scale.set(fs * 1.2, fs * 0.6, fs); rk2.position.y = fs * 0.15;
+    });
+
+    drive.trail += stepD;
+    if (drive.trail > 0.05) {
+      drive.trail = 0;
+      [1, 4].forEach(function (wi) {
+        wheels[wi].getWorldPosition(v1);
+        tp[tHead * 3] = v1.x; tp[tHead * 3 + 1] = 0.004; tp[tHead * 3 + 2] = v1.z; tAge[tHead] = 0;
+        tHead = (tHead + 1) % TN;
+      });
+    }
+    for (var ti = 0; ti < TN; ti++) {
+      tAge[ti] += dt; tp[ti * 3] -= shift;
+      var tx = tp[ti * 3], td = Math.sqrt(tx * tx + tp[ti * 3 + 2] * tp[ti * 3 + 2]);
+      var tk = Math.max(0, 1 - tAge[ti] / 7) * Math.max(0, 1 - td / 5.5);
+      tc[ti * 3] = BG.r + (TG.r - BG.r) * tk; tc[ti * 3 + 1] = BG.g + (TG.g - BG.g) * tk; tc[ti * 3 + 2] = BG.b + (TG.b - BG.b) * tk;
+    }
+    trackGeo.attributes.position.needsUpdate = true; trackGeo.attributes.color.needsUpdate = true;
+
+    var fx = Math.cos(drive.h), fz = -Math.sin(drive.h);
+    for (var di = 0; di < DN; di++) {
+      dLife[di] += dt;
+      if (dLife[di] > dMax[di]) {
+        dLife[di] = 0; dMax[di] = 0.6 + Math.random() * 0.8;
+        wheels[Math.random() < 0.5 ? 2 : 5].getWorldPosition(v2);
+        dp[di * 3] = v2.x - fx * 0.3 + (Math.random() - 0.5) * 0.15; dp[di * 3 + 1] = 0.03; dp[di * 3 + 2] = v2.z - fz * 0.3 + (Math.random() - 0.5) * 0.15;
+        var kick = 0.15 + Math.random() * 0.3;
+        dv[di * 3] = -fx * kick + (Math.random() - 0.5) * 0.12; dv[di * 3 + 1] = 0.12 + Math.random() * 0.28; dv[di * 3 + 2] = -fz * kick + (Math.random() - 0.5) * 0.15;
+      }
+      dp[di * 3] += dv[di * 3] * dt - shift; dp[di * 3 + 1] += dv[di * 3 + 1] * dt; dp[di * 3 + 2] += dv[di * 3 + 2] * dt;
+      dv[di * 3 + 1] -= 0.35 * dt;
+      if (dp[di * 3 + 1] < 0.01) dp[di * 3 + 1] = 0.01;
+      var lk = 1 - dLife[di] / dMax[di]; lk = lk * lk * 0.75;
+      dc[di * 3] = BG.r + (DG.r - BG.r) * lk; dc[di * 3 + 1] = BG.g + (DG.g - BG.g) * lk; dc[di * 3 + 2] = BG.b + (DG.b - BG.b) * lk;
+    }
+    dustGeo.attributes.position.needsUpdate = true; dustGeo.attributes.color.needsUpdate = true;
+
+    // head aim: turns toward the cursor like a neck, limited to about ±90° from straight ahead
+    var faceCam = -camAz * Math.PI / 180;
+    var worldT = faceCam + clamp(sm.x, -2.4, 2.4) * 0.6;
+    var yawT = clamp(worldT - drive.h, -1.55, 1.55);
+    var pitT = clamp(sm.y * 0.24, -0.4, 0.45);
+    var kh = 1 - Math.exp(-dt * 5);
+    var dy0 = yawT - yaw;
+    yaw += dy0 * kh; pitch += (pitT - pitch) * kh;
+    yawG.rotation.y = yaw; pitchG.rotation.z = pitch;
+    var ey = clamp(-dy0 * 0.09, -0.028, 0.028), ep = clamp((pitT - pitch) * 0.09, -0.022, 0.022);
+    eyes.forEach(function (e) { e.position.set(0.004, ep, ey); });
+    drive.speed = V;
+
+    // blink
+    var sy = 1;
+    if (t > nextBlink && blinkT < 0) blinkT = 0;
+    if (blinkT >= 0) {
+      blinkT += dt; var bp = blinkT / 0.15;
+      sy = 1 - 0.92 * Math.sin(Math.min(bp, 1) * Math.PI);
+      if (bp >= 1) {
+        blinkT = -1;
+        if (!doubleBlink && Math.random() < 0.25) { doubleBlink = true; nextBlink = t + 0.12; }
+        else { doubleBlink = false; nextBlink = t + 2.8 + Math.random() * 4; }
+      }
+    }
+    eyes.forEach(function (e) { e.scale.y = sy; });
+    mLed.emissiveIntensity = 1.1 + 0.6 * Math.sin(t * 2.4);
+
+    hudT += dt;
+    if (hudT > 0.12) { hudT = 0; read.textContent = 'Yaw ' + sgn(yaw * 57.2958) + '° · Pitch ' + sgn(pitch * 57.2958) + '°'; modeEl.textContent = 'Phoenix · Driving ' + (drive.speed * 0.12).toFixed(2) + ' m/s'; }
+
+    renderer.render(scene, camera);
+    firstPaint = false;
+  }
+  frame();
+})();
+</script>
+
+</body></html>
